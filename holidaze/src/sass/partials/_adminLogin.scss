@@ -1,25 +1,21 @@
-.contact{
+.login{
     width: 60%;
     margin: 40px auto;
 }
 
-.contact__form{
+.login__form{
     margin: 48px auto;
 }
 
-.contact__form--button{
+.login__form--button{
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: flex-end;
 }
 
-.errMsg{
-    color: rgb(134, 16, 32);
-}
-
 @media (max-width: 992px){
-    .contact{
+    .login{
         width: 90%;
     }
 }

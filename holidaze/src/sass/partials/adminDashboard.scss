@@ -1,0 +1,14 @@
+.dashboard{
+    margin: 48px auto;
+}
+
+.dashboard__links{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 32px;
+    padding: 0;
+    justify-content: space-between;
+    
+}

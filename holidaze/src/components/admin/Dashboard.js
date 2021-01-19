@@ -7,15 +7,16 @@ function Dashboard() {
    
     return (
         <>
-        <Container>
+        <Container className="dashboard">
             <Heading title="Dashboard" />
+            <Container className="dashboard__links">
                     <NavLink to="/admin/hotels"><Button>Hotels</Button></NavLink>
                     <NavLink to="/admin/hotels/add"><Button>Add hotel</Button></NavLink>
                     <NavLink to="/admin/enquiries"><Button>Enquiries</Button></NavLink>
                     <NavLink to="/admin/contact"><Button>Messages</Button></NavLink>
             </Container>
+        </Container>
         </>
     );
 }
-
 export default Dashboard;

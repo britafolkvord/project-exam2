@@ -1,5 +1,5 @@
 import React from "react";
-//import { FETCH_OPTIONS, BASE_URL } from "../../constants/constants";
+//import { FETCH_OPTIONS, BASE_URL } from "../../constants/api";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
@@ -41,9 +41,9 @@ export default function Contact() {
   
     return (
       <>
-      <Container>
+      <Container className="contact">
       <Heading title="Contact"/>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
   
                   <Form.Group>
                   <Form.Label>Name</Form.Label>
@@ -62,8 +62,9 @@ export default function Contact() {
                   <Form.Control name="message" placeholder="Type your message here" as="textarea" rows={5} ref={register} />
                   {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
                   </Form.Group>
-        
-        <Button type="submit">Submit</Button>
+        <div className="contact__form--button">
+        <Button type="submit" className="contact__button">Submit</Button>
+        </div>
       </Form>
       </Container>
       </>

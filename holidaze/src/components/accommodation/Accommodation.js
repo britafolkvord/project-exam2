@@ -26,6 +26,7 @@ function Accommodation() {
                     setError(json.message);
                 } else {
                     setHotels(json);
+                    setFilteredHotels(json);
                 }
             })
             .catch((error) => console.log(error))

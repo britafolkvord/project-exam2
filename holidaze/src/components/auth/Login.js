@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Heading from "../layout/Heading";
+import { Container } from "react-bootstrap";
 
 function Login() {
     const { register, handleSubmit } = useForm();
@@ -13,6 +14,7 @@ function Login() {
 
     return (
         <>
+            <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
                <Heading title="Login" />
                 <Form.Group>
@@ -27,11 +29,13 @@ function Login() {
 
                 <Button type="submit">Submit</Button>
             </Form>
+            </Container>
         </>
     );
 }
 
 export default Login;
+
 
 // import React, { useContext } from "react";
 // import { AuthContext } from "../../context/AuthContext";
