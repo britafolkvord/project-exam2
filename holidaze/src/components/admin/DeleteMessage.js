@@ -6,7 +6,7 @@ import { BASE_URL, headers, DELETE } from '../../constants/api'
 
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-function DeleteHotel(props) {
+function DeleteMessage(props) {
     const history = useHistory()
 
     function checkDelete() {
@@ -15,7 +15,7 @@ function DeleteHotel(props) {
             buttons: [
                 {
                     label: 'yes',
-                    onClick: () => deleteHotel(),
+                    onClick: () => deleteMessage(),
                 },
                 {
                     label: 'no',
@@ -24,11 +24,11 @@ function DeleteHotel(props) {
         })
     }
 
-    async function deleteHotel() {
-        const url = BASE_URL + 'establishments/' + props.id
+    async function deleteMessage() {
+        const url = BASE_URL + 'contacts/' + props.id
         const options = { headers, method: DELETE }
         await fetch(url, options)
-        history.push('/admin/hotels')
+        history.push('/admin/messages')
     }
 
     return (
@@ -38,4 +38,4 @@ function DeleteHotel(props) {
     )
 }
 
-export default DeleteHotel
+export default DeleteMessage

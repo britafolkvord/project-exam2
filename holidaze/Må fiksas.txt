@@ -1,0 +1,9 @@
+Må fiksas
+
+-Hotel details siå??
+-Sass variabler
+-Login vs Register
+-Dashboard ser fucked ut
+-Nav dropdown
+-enquiries
+-footer

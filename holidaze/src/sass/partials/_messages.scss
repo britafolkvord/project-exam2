@@ -1,0 +1,41 @@
+.contacts {
+    width: 100%;
+    margin: 56px 0;
+    padding: 40px 0;
+}
+
+.contacts__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 48px;
+    padding: 0;
+}
+
+.contacts__message {
+    width: 40%;
+    padding: 16px;
+    margin: 8px;
+    background-color: #dddddd;
+}
+
+.contacts__btn--delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+    .contacts {
+        width: 90%;
+    }
+
+    .contacts__container {
+        flex-direction: column;
+    }
+
+    .contacts__message {
+        width: 90%;
+    }
+}

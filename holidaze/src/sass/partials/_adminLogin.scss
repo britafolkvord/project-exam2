@@ -1,21 +1,21 @@
-.login{
+.login {
     width: 60%;
     margin: 40px auto;
 }
 
-.login__form{
+.login__form {
     margin: 48px auto;
 }
 
-.login__form--button{
+.login__form--button {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: flex-end;
 }
 
-@media (max-width: 992px){
-    .login{
+@media (max-width: 992px) {
+    .login {
         width: 90%;
     }
 }

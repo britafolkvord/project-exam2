@@ -1,14 +1,19 @@
-.dashboard{
+.dashboard {
     margin: 48px auto;
 }
 
-.dashboard__links{
+.dashboard__links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
     margin-top: 32px;
     padding: 0;
-    justify-content: space-between;
-    
+    justify-content: flex-start;
+}
+
+.dashboard__btn {
+    margin-right: 8px;
+    background-color: #bb7f63;
+    border-color: #bb7f63;
 }

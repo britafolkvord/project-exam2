@@ -1,72 +1,87 @@
-import React from "react";
-//import { FETCH_OPTIONS, BASE_URL } from "../../constants/api";
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from "react-hook-form";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Heading from '../layout/Heading';
-import ErrorMessage from "./ErrorMessage";
-import { Container } from "react-bootstrap";
+import React, { useState } from 'react'
+import { BASE_URL, headers, POST } from '../../constants/api'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import Heading from '../layout/Heading'
+import ErrorMessage from './ErrorMessage'
+import { Container, Button, Form, Modal } from 'react-bootstrap'
 
 const schema = yup.object().shape({
-    name: yup
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .required("Name is required"),
-    email: yup
-        .string()
-        .email("Please enter a valid email")
-        .required("Email is required"),
-    message: yup
-        .string()
-        .min(10,"The message must be at least 10 characters")
-        .required("A message is required")
-});
+    name: yup.string().min(2, 'Name must be at least 2 characters').required('Name is required'),
+    email: yup.string().email('Please enter a valid email').required('Email is required'),
+    message: yup.string().min(10, 'The message must be at least 10 characters').required('A message is required'),
+})
 
 export default function Contact() {
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
     const { register, errors, handleSubmit } = useForm({
-        resolver: yupResolver(schema)
-    });
+        resolver: yupResolver(schema),
+    })
+
     function onSubmit(data) {
-        console.log(data);
-        /*const url = BASE_URL + "contacts";
-        FETCH_OPTIONS.method = "POST";
-         FETCH_OPTIONS.body = JSON.stringify(data);
+        //console.log(data);
+        const url = BASE_URL + 'contacts'
+        const options = { headers, method: POST }
+        options.body = JSON.stringify(data)
 
-        fetch(url, FETCH_OPTIONS)
-        .then((r) => r.json())
-        .then((j) => console.log(j));
-        */}
-  
+        fetch(url, options)
+            .then((r) => r.json())
+            .then((j) => console.log(j))
+
+        handleShow()
+    }
+
     return (
-      <>
-      <Container className="contact">
-      <Heading title="Contact"/>
-      <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
-  
-                  <Form.Group>
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control name="name" placeholder="Enter your name" ref={register} />
-                  {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
-                  </Form.Group>
-  
-                  <Form.Group>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control name="email" placeholder="Example@email.com" ref={register} />
-                 {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
-                  </Form.Group>
-  
-                  <Form.Group>
-                  <Form.Label>Message</Form.Label>
-                  <Form.Control name="message" placeholder="Type your message here" as="textarea" rows={5} ref={register} />
-                  {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
-                  </Form.Group>
-        <div className="contact__form--button">
-        <Button type="submit" className="contact__button">Submit</Button>
-        </div>
-      </Form>
-      </Container>
-      </>
-    )};
+        <>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Your message has been sent!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    We will get back to you shortly so keep an eye out for a message from us in your inbox
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Container className="contact">
+                <Heading title="Contact" />
+                <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control name="name" placeholder="Enter your name" ref={register} />
+                        {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
+                    </Form.Group>
 
+                    <Form.Group>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control name="email" placeholder="Example@email.com" ref={register} />
+                        {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Message</Form.Label>
+                        <Form.Control
+                            name="message"
+                            placeholder="Type your message here"
+                            as="textarea"
+                            rows={5}
+                            ref={register}
+                        />
+                        {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
+                    </Form.Group>
+                    <div className="contact__form--button">
+                        <Button type="submit" className="contact__button">
+                            Submit
+                        </Button>
+                    </div>
+                </Form>
+            </Container>
+        </>
+    )
+}

@@ -1,25 +1,25 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { BASE_URL, headers } from "../../constants/api";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import { BASE_URL, headers } from '../../constants/api'
 
 function AddHotel() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm()
 
-    const history = useHistory();
+    const history = useHistory()
 
     async function onSubmit(data) {
-        console.log("data", data);
+        console.log('data', data)
 
-        const url = BASE_URL + "establishments";
+        const url = BASE_URL + 'establishments'
 
-        const options = { headers, method: "POST", body: JSON.stringify(data) };
+        const options = { headers, method: 'POST', body: JSON.stringify(data) }
 
-        await fetch(url, options);
+        await fetch(url, options)
 
-        history.push("/admin/hotels");
+        history.push('/admin/hotels')
     }
 
     return (
@@ -37,7 +37,7 @@ function AddHotel() {
 
             <Button type="submit">Submit</Button>
         </Form>
-    );
+    )
 }
 
-export default AddHotel;
+export default AddHotel

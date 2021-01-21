@@ -1,24 +1,25 @@
-.hotels{
+.hotels {
     margin-top: 40px;
 }
 
-.cardContainer{
+.cardContainer {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.card{
+.card {
     width: 40%;
     flex: 0 1 auto;
     margin-left: 0;
     margin: 24px;
 }
 
-.card-img-top{
+.card-img-top {
     height: 300px;
 }
 
-.card__btn--blue{
+.card__btn--blue {
     margin-top: 16px;
 }
