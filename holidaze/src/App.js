@@ -1,28 +1,29 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Container from 'react-bootstrap/Container'
-import { AuthContextProvider } from './context/AuthContext'
-import ProtectedRoute from './components/routes/ProtectedRoute'
-import Home from './components/home/Home'
-import Accommodation from './components/accommodation/Accommodation'
-import AccommodationDetails from './components/accommodation/AccommodationDetails'
-import Contact from './components/contact/Contact'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-import Hotels from './components/admin/Hotels'
-import AddHotel from './components/admin/AddHotel'
-import EditHotel from './components/admin/EditHotel'
-import Dashboard from './components/admin/Dashboard'
-import Navigation from './components/layout/Nav'
-import Enquiries from './components/admin/Enquiries'
-import Messages from './components/admin/Messages'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import { AuthContextProvider } from './context/AuthContext';
+import ProtectedRoute from './components/routes/ProtectedRoute';
+import Home from './components/home/Home';
+import Accommodation from './components/accommodation/Accommodation';
+import AccommodationDetails from './components/accommodation/AccommodationDetails';
+import Contact from './components/contact/Contact';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Hotels from './components/admin/Hotels';
+import AddHotel from './components/admin/AddHotel';
+import EditHotel from './components/admin/EditHotel';
+import Dashboard from './components/admin/Dashboard';
+import Navigation from './components/layout/Nav';
+import Enquiries from './components/admin/Enquiries';
+import Messages from './components/admin/Messages';
+import Footer from './components/layout/Footer';
 
 function App() {
     return (
         <AuthContextProvider>
             <Router>
                 <Navigation />
-
+                <Footer />
                 <Container fluid>
                     <Switch>
                         <Route path="/" exact component={Home} />
@@ -42,7 +43,7 @@ function App() {
                 </Container>
             </Router>
         </AuthContextProvider>
-    )
+    );
 }
 
-export default App
+export default App;

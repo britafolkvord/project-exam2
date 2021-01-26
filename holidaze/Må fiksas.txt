@@ -1,9 +1,14 @@
 Må fiksas
 
--Hotel details siå??
--Sass variabler
+
 -Login vs Register
 -Dashboard ser fucked ut
 -Nav dropdown
--enquiries
 -footer
+-css modules
+- spinner te alle sidene med fetch
+
+./node_modules/.bin/prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+
+
+

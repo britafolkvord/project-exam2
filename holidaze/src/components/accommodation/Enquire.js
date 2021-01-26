@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
 import { BASE_URL, headers, POST } from '../../constants/api';
+import { useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Heading from '../layout/Heading';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../contact/ErrorMessage';
 import { Container, Button, Form, Modal } from 'react-bootstrap';
 
 const schema = yup.object().shape({
     name: yup.string().min(2, 'Name must be at least 2 characters').required('Name is required'),
     email: yup.string().email('Please enter a valid email').required('Email is required'),
-    message: yup.string().min(10, 'The message must be at least 10 characters').required('A message is required'),
+    checkIn: yup.date().required('A check-in date must be selected'),
+    checkOut: yup
+        .date()
+        .when(
+            'checkIn',
+            (checkIn, schema) => checkIn && schema.min(checkIn, 'The check-out date must be after the check-in day')
+        )
+        .required('A check-out date must be selected'),
 });
 
-export default function Contact() {
+function Enquire() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    let { id } = useParams();
     const { register, errors, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
 
     function onSubmit(data) {
-        //console.log(data);
-        const url = BASE_URL + 'contacts';
+        console.log(data);
+        const url = BASE_URL + 'enquiries';
         const options = { headers, method: POST };
         options.body = JSON.stringify(data);
 
@@ -38,7 +47,7 @@ export default function Contact() {
         <>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Your message has been sent!</Modal.Title>
+                    <Modal.Title>Your enquiry has been sent!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     We will get back to you shortly so keep an eye out for a message from us in your inbox
@@ -50,7 +59,7 @@ export default function Contact() {
                 </Modal.Footer>
             </Modal>
             <Container className="contact">
-                <Heading title="Contact" />
+                <Heading title="Enquire" />
                 <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
@@ -65,15 +74,18 @@ export default function Contact() {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>Message</Form.Label>
-                        <Form.Control
-                            name="message"
-                            placeholder="Type your message here"
-                            as="textarea"
-                            rows={5}
-                            ref={register}
-                        />
-                        {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
+                        <Form.Label>Check-In date</Form.Label>
+                        <Form.Control name="checkIn" type="date" ref={register} />
+                        {errors.checkIn && <ErrorMessage errMsg={errors.checkIn?.message} />}
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Check-Out date</Form.Label>
+                        <Form.Control name="checkOut" type="date" ref={register} />
+                        {errors.checkOut && <ErrorMessage errMsg={errors.checkOut?.message} />}
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Establishment ID</Form.Label>
+                        <Form.Control name="establishmentId" value={id} readOnly ref={register} />
                     </Form.Group>
                     <div className="contact__form--button">
                         <Button type="submit" className="contact__button">
@@ -85,3 +97,5 @@ export default function Contact() {
         </>
     );
 }
+
+export default Enquire;

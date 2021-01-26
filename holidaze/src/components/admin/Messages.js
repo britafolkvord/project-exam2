@@ -1,32 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
-import { BASE_URL, headers } from '../../constants/api'
-import Heading from '../layout/Heading'
-import DeleteMessage from './DeleteMessage'
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { BASE_URL, headers } from '../../constants/api';
+import Heading from '../layout/Heading';
+import DeleteMessage from './DeleteMessage';
 
 function Messages() {
-    const [messages, setMessages] = useState([])
-    const [error, setError] = useState(null)
-
-    const url = BASE_URL + 'contacts'
-
-    const options = { headers }
+    const [messages, setMessages] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
+        const url = BASE_URL + 'contacts';
+        const options = { headers };
+
         fetch(url, options)
             .then((response) => response.json())
             .then((json) => {
-                console.table(json)
+                console.table(json);
                 // handle error
                 if (json.error) {
-                    setMessages([])
-                    setError(json.message)
+                    setMessages([]);
+                    setError(json.message);
                 } else {
-                    setMessages(json)
+                    setMessages(json);
                 }
             })
-            .catch((error) => console.log(error))
-    }, [])
+            .catch((error) => console.log(error));
+    }, []);
 
     return (
         <Container className="contacts">
@@ -41,14 +40,14 @@ function Messages() {
                             <p>Sent : {message.createdAt}</p>
                             <p>{message.message}</p>
                             <div className="contacts__btn--delete">
-                                <DeleteMessage />
+                                <DeleteMessage id={message.id} />
                             </div>
                         </div>
-                    )
+                    );
                 })}
             </Container>
         </Container>
-    )
+    );
 }
 
-export default Messages
+export default Messages;
