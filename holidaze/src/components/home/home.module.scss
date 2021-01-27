@@ -1,5 +1,48 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/typography';
 
 .home {
-    background: red;
+    background-image: url(https://images.unsplash.com/photo-1580990695461-471b8e43e767?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D);
+    max-width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        color: white;
+        font-size: 3rem;
+        font-family: $heading-font;
+    }
+}
+
+.homeContent {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15%;
+}
+
+.homeBtn {
+    background-color: $light-grey;
+    font-family: $text-font;
+    margin: 16px auto;
+    color: black;
+    border: none;
+    font-size: 1.4rem;
+    transition: transform 0.5s;
+}
+
+.homeBtn:hover {
+    color: black;
+    background-color: $light-grey;
+    transform: scale(1.1);
+}
+
+.btnLink {
+    color: black;
+    margin: 0 auto;
 }

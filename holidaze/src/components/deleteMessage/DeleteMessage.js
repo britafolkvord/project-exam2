@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import Button from 'react-bootstrap/Button';
 import { BASE_URL, headers, DELETE } from '../../constants/api';
+import styles from './delete.module.scss';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -33,7 +34,7 @@ function DeleteMessage(props) {
     }
 
     return (
-        <Button variant="danger" onClick={checkDelete}>
+        <Button variant="danger" onClick={checkDelete} className={styles.delete}>
             Delete
         </Button>
     );

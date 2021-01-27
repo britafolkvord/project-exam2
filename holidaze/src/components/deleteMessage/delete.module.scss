@@ -1,0 +1,10 @@
+.delete {
+    transition: transform 0.5s;
+    border: none;
+}
+
+.delete:hover {
+    transform: scale(1.1);
+    background-color: #dc3545;
+    border: none;
+}

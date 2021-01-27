@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import styles from './heading.module.scss';
 
 function Heading({ title }) {
-    return <h1 className="heading">{title}</h1>
+    return <h1 className={styles.heading}>{title}</h1>;
 }
 
-export default Heading
+export default Heading;

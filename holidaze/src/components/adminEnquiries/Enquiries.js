@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import { BASE_URL, headers } from '../../constants/api';
 import Heading from '../layout/Heading';
+import styles from './enquiries.module.scss';
 
 function Enquiries() {
     const [enquiries, setEnquiries] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const url = BASE_URL + 'enquiries';
@@ -23,14 +25,19 @@ function Enquiries() {
                     setEnquiries(json);
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) {
+        return <Spinner animation="border" className="spinner" />;
+    }
 
     if (enquiries === []) {
         return (
             <>
                 <Heading title="Enquiries" />
-                {error && <div className="error">{error}</div>}
+                {error && <div>{setError}</div>}
                 <p>No current enquiries</p>
             </>
         );
@@ -38,12 +45,12 @@ function Enquiries() {
         return (
             <Container>
                 <Heading title="Enquiries" />
-                {error && <div className="error">{error}</div>}
-                <Container>
+                {error && <div>{error}</div>}
+                <Container className={styles.container}>
                     {enquiries.map((enquiry) => {
                         return (
-                            <div key={enquiry.id}>
-                                <h2>Name: {enquiry.name}</h2>
+                            <div key={enquiry.id} className={styles.enquiries}>
+                                <h2>{enquiry.name}</h2>
                                 <p>Email: {enquiry.email}</p>
                                 <p>Check-in date: {enquiry.checkIn}</p>
                                 <p>Check-out date: {enquiry.checkOut}</p>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import { BASE_URL, headers } from '../../constants/api';
 import Heading from '../layout/Heading';
-import DeleteMessage from './DeleteMessage';
+import DeleteMessage from '../deleteMessage/DeleteMessage';
+import styles from './messages.module.scss';
 
 function Messages() {
     const [messages, setMessages] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const url = BASE_URL + 'contacts';
@@ -24,22 +26,27 @@ function Messages() {
                     setMessages(json);
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false));
     }, []);
 
+    if (loading) {
+        return <Spinner animation="border" className="spinner" />;
+    }
+
     return (
-        <Container className="contacts">
+        <Container className={styles.messages}>
             <Heading title="Messages" />
-            {error && <div className="error">{error}</div>}
-            <Container className="contacts__container">
+            {error && <div>{error}</div>}
+            <Container className={styles.messageContainer}>
                 {messages.map((message) => {
                     return (
-                        <div key={message.id} className="contacts__message">
+                        <div key={message.id} className={styles.message}>
                             <h2>{message.name}</h2>
                             <p>{message.email}</p>
                             <p>Sent : {message.createdAt}</p>
                             <p>{message.message}</p>
-                            <div className="contacts__btn--delete">
+                            <div className={styles.deleteBtn}>
                                 <DeleteMessage id={message.id} />
                             </div>
                         </div>

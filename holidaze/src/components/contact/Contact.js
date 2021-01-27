@@ -4,8 +4,9 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Heading from '../layout/Heading';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../error/ErrorMessage';
 import { Container, Button, Form, Modal } from 'react-bootstrap';
+import styles from './contact.module.scss';
 
 const schema = yup.object().shape({
     name: yup.string().min(2, 'Name must be at least 2 characters').required('Name is required'),
@@ -49,9 +50,9 @@ export default function Contact() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Container className="contact">
+            <Container className={styles.contact}>
                 <Heading title="Contact" />
-                <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
+                <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
                         <Form.Control name="name" placeholder="Enter your name" ref={register} />
@@ -75,8 +76,8 @@ export default function Contact() {
                         />
                         {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
                     </Form.Group>
-                    <div className="contact__form--button">
-                        <Button type="submit" className="contact__button">
+                    <div className={styles.contactFormBtn}>
+                        <Button type="submit" className={styles.submitBtn}>
                             Submit
                         </Button>
                     </div>

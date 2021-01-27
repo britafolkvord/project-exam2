@@ -4,7 +4,7 @@ import { Container, Spinner } from 'react-bootstrap';
 import { BASE_URL, headers } from '../../constants/api';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
-import SearchHotels from './searchHotels';
+import SearchHotels from '../search/searchHotels';
 
 function Accommodation() {
     const [hotels, setHotels] = useState([]);

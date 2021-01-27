@@ -1,0 +1,16 @@
+@import '../../sass/partials/variables';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 32px 0;
+}
+
+.enquiries {
+    margin: 8px 16px 8px 0;
+    padding: 24px;
+    background-color: $light-grey;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}

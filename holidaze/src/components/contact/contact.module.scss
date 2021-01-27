@@ -1,0 +1,35 @@
+@import '../../sass/partials/variables';
+
+.contact {
+    width: 60%;
+    height: 80vh;
+    margin: 40px auto;
+}
+
+.contactForm {
+    margin: 48px auto;
+}
+
+.contactFormBtn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.submitBtn {
+    background-color: $light-blue;
+    border: none;
+    transition: transform 0.5s;
+}
+
+.submitBtn:hover {
+    transform: scale(1.05);
+    background-color: $light-blue;
+}
+
+@media (max-width: 992px) {
+    .contact {
+        width: 90%;
+    }
+}

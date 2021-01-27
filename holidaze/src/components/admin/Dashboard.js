@@ -1,9 +1,9 @@
-import React from 'react'
-import { Button, Container } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
-import Heading from '../layout/Heading'
-import Messages from './Messages'
-import Enquiries from './Enquiries'
+import React from 'react';
+import { Button, Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import Heading from '../layout/Heading';
+import Messages from '../adminMessages/Messages';
+import Enquiries from '../adminEnquiries/Enquiries';
 
 function Dashboard() {
     return (
@@ -22,7 +22,7 @@ function Dashboard() {
                 <Enquiries />
             </Container>
         </>
-    )
+    );
 }
 
-export default Dashboard
+export default Dashboard;

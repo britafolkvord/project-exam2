@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import { BASE_URL, headers } from '../../constants/api';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
@@ -7,6 +7,7 @@ import Heading from '../layout/Heading';
 function Hotels() {
     const [hotels, setHotels] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -24,8 +25,13 @@ function Hotels() {
                     setHotels(json);
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) {
+        return <Spinner animation="border" className="spinner" />;
+    }
 
     return (
         <>

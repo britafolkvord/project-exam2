@@ -1,10 +1,10 @@
-.contacts {
+.messages {
     width: 100%;
     margin: 56px 0;
     padding: 40px 0;
 }
 
-.contacts__container {
+.messageContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -13,29 +13,30 @@
     padding: 0;
 }
 
-.contacts__message {
+.message {
     width: 40%;
     padding: 16px;
     margin: 8px;
     background-color: #dddddd;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
 }
 
-.contacts__btn--delete {
+.deleteBtn {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
 @media (max-width: 992px) {
-    .contacts {
+    .messages {
         width: 90%;
     }
 
-    .contacts__container {
+    .messageContainer {
         flex-direction: column;
     }
 
-    .contacts__message {
+    .message {
         width: 90%;
     }
 }

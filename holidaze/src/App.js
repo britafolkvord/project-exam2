@@ -14,16 +14,15 @@ import AddHotel from './components/admin/AddHotel';
 import EditHotel from './components/admin/EditHotel';
 import Dashboard from './components/admin/Dashboard';
 import Navigation from './components/layout/Nav';
-import Enquiries from './components/admin/Enquiries';
-import Messages from './components/admin/Messages';
-import Footer from './components/layout/Footer';
+import Enquiries from './components/adminEnquiries/Enquiries';
+import Messages from './components/adminMessages/Messages';
+import PageFooter from './components/layout/Footer';
 
 function App() {
     return (
         <AuthContextProvider>
             <Router>
                 <Navigation />
-                <Footer />
                 <Container fluid>
                     <Switch>
                         <Route path="/" exact component={Home} />
@@ -33,14 +32,15 @@ function App() {
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
                         <ProtectedRoute path="/admin" exact component={Dashboard} />
-                        <ProtectedRoute path="/admin/Enquiries" exact component={Enquiries} />
-                        <ProtectedRoute path="/admin/Messages" exact component={Messages} />
+                        <ProtectedRoute path="/adminEnquiries/Enquiries" exact component={Enquiries} />
+                        <ProtectedRoute path="/adminMessages/Messages" exact component={Messages} />
                         <ProtectedRoute path="/admin/hotels" exact component={Hotels} />
                         <ProtectedRoute path="/admin/hotels/add" exact component={AddHotel} />
                         <ProtectedRoute path="/admin/hotels/edit/:id" exact component={EditHotel} />
                         <Redirect to="/" />
                     </Switch>
                 </Container>
+                <PageFooter />
             </Router>
         </AuthContextProvider>
     );

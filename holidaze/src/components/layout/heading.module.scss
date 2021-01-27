@@ -1,0 +1,7 @@
+@import '../../sass/partials/typography';
+@import '../../sass/partials/variables';
+
+.heading {
+    font-family: $heading-font;
+    font-size: 3rem;
+}

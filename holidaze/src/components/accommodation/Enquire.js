@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Heading from '../layout/Heading';
-import ErrorMessage from '../contact/ErrorMessage';
+import ErrorMessage from '../error/ErrorMessage';
 import { Container, Button, Form, Modal } from 'react-bootstrap';
 
 const schema = yup.object().shape({
