@@ -1,21 +1,24 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+
 import Heading from '../layout/Heading';
 import Messages from '../adminMessages/Messages';
 import Enquiries from '../adminEnquiries/Enquiries';
 
+import styles from './dashboard.module.scss';
+
 function Dashboard() {
     return (
         <>
-            <Container className="dashboard">
-                <Heading title="Dashboard" />
-                <Container className="dashboard__links">
-                    <NavLink to="/admin/hotels">
-                        <Button className="dashboard__btn">Hotels</Button>
+            <Container className={styles.dashboard}>
+                <Heading title="Dashboard" className={styles.heading} />
+                <Container className={styles.links}>
+                    <NavLink to="../admin/adminHotels/hotels">
+                        <Button className={styles.btn}>Hotels</Button>
                     </NavLink>
-                    <NavLink to="/admin/hotels/add">
-                        <Button className="dashboard__btn">Add hotel</Button>
+                    <NavLink to="../admin/hotels/add">
+                        <Button className={styles.btn}>Add hotel</Button>
                     </NavLink>
                 </Container>
                 <Messages />

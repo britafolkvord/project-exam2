@@ -1,16 +1,41 @@
 @import '../../sass/partials/variables';
 
 .container {
+    padding: 0;
+    width: 100%;
+}
+
+.enquiriesContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
+    margin: 48px 0 80px;
     padding: 0;
-    margin: 32px 0;
 }
 
 .enquiries {
+    width: 40%;
     margin: 8px 16px 8px 0;
     padding: 24px;
-    background-color: $light-grey;
+    background-color: #fffffff3;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
+.name {
+    margin-bottom: 24px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 992px) {
+    .enquiriesContainer {
+        flex-direction: column;
+    }
+
+    .enquiries {
+        width: 90%;
+    }
 }

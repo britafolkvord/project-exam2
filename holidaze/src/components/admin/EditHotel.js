@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
+
 import { BASE_URL, headers, PATCH } from '../../constants/api';
 import DeleteHotel from './DeleteHotel';
 
@@ -9,6 +10,11 @@ function AddHotel() {
     const defaultState = {
         name: '',
         email: '',
+        price: '',
+        maxGuests: '',
+        selfCatering: '',
+        description: '',
+        image: '',
     };
 
     const history = useHistory();
@@ -97,12 +103,7 @@ function AddHotel() {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Image</Form.Label>
-                    <Form.Control
-                        name="image"
-                        defaultValue={`${hotel.image}`}
-                        placeholder={`${hotel.image}`}
-                        ref={register}
-                    />
+                    <Form.Control name="image" defaultValue={hotel.image} placeholder={hotel.image} ref={register} />
                 </Form.Group>
 
                 <Button type="submit">Update</Button>

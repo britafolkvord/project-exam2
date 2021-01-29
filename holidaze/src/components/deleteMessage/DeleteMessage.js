@@ -2,10 +2,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import Button from 'react-bootstrap/Button';
-import { BASE_URL, headers, DELETE } from '../../constants/api';
-import styles from './delete.module.scss';
-
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
+import { BASE_URL, headers, DELETE } from '../../constants/api';
+
+import styles from './delete.module.scss';
 
 function DeleteMessage(props) {
     const history = useHistory();

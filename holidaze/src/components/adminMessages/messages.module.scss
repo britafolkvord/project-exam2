@@ -15,10 +15,23 @@
 
 .message {
     width: 40%;
-    padding: 16px;
+    padding: 24px;
     margin: 8px;
-    background-color: #dddddd;
+    background-color: #fffffff3;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
+.name {
+    margin-bottom: 24px;
+}
+
+span {
+    font-weight: 700;
+}
+
+.messageContent {
+    padding: 16px;
+    border: 1px solid grey;
 }
 
 .deleteBtn {
@@ -29,7 +42,7 @@
 
 @media (max-width: 992px) {
     .messages {
-        width: 90%;
+        width: 100%;
     }
 
     .messageContainer {

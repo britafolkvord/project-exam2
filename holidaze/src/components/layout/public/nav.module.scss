@@ -1,0 +1,98 @@
+@import '../../../sass/partials/typography';
+@import '../../../sass/partials/variables';
+
+.navColor {
+    background-color: #ebebeb;
+}
+
+.navbarNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logoLink {
+    transition: transform 0.5s;
+}
+
+.navbarBrand {
+    color: $light-blue;
+    font-size: 2rem;
+    font-family: $logo-font;
+    margin-right: 8px;
+}
+
+.logoLink:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.navbarContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: $heading-font;
+}
+
+.navLink {
+    font-family: $heading-font;
+    color: $grey12;
+    margin: 0 8px;
+    transition: transform 0.5s;
+}
+
+.navLink:hover {
+    text-decoration: none;
+    color: $grey12;
+    transform: scale(1.05);
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $grey12;
+}
+
+.bi {
+    width: 16px;
+    height: 16px;
+    fill: $grey12;
+    margin-left: 8px;
+}
+
+.login:hover {
+    text-decoration: none;
+    color: $grey12;
+    transform: scale(1.05);
+}
+
+.active {
+    color: black;
+    text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+    .navbarNav {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .navbarContent {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .dropdown {
+        margin-top: 8px;
+        border-top: 1px solid $dark-grey;
+    }
+
+    .navLink {
+        font-family: $heading-font;
+        color: $grey12;
+        margin: 8px 8px;
+    }
+}

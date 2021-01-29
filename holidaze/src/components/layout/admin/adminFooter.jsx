@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './footer.module.scss';
 
-function PageFooter() {
+import styles from './adminfooter.module.scss';
+
+function AdminFooter() {
     return (
         <footer className={styles.footer}>
             <div className={styles.col1}>
                 <p>
-                    <Link to="../../contact/Contact" className={styles.footerLink}>
+                    <Link to="../../../contact/contact" className={styles.footerLink}>
                         Contact
                     </Link>
                 </p>
@@ -30,4 +31,4 @@ function PageFooter() {
     );
 }
 
-export default PageFooter;
+export default AdminFooter;

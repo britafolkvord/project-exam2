@@ -1,0 +1,39 @@
+.dashboard {
+    padding-top: 48px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 32px;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.btn {
+    margin-right: 8px;
+    font-size: 1.1rem;
+    background-color: #bb7f63;
+    border-color: #bb7f63;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
+@media (max-width: 992px) {
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .links {
+        flex-direction: column;
+    }
+
+    .btn {
+        margin-bottom: 24px;
+        width: 100%;
+    }
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
-//import { Link } from 'react-router-dom';
+
 import { BASE_URL, headers } from '../../constants/api';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
 import SearchHotels from '../search/searchHotels';
+
+import styles from './accommodation.module.scss';
 
 function Accommodation() {
     const [hotels, setHotels] = useState([]);
@@ -51,12 +53,12 @@ function Accommodation() {
 
     return (
         <>
-            <Container className="hotels">
+            <Container className={styles.hotels}>
                 <Heading title="Hotels" />
-                {error && <div className="error">{error}</div>}
+                {error && <div>{error}</div>}
                 <SearchHotels handleSearch={filterHotels} />
                 {
-                    <Container className="cardContainer">
+                    <Container className={styles.container}>
                         {filteredHotels.map((hotel) => {
                             const { id, name, image, price, selfCatering } = hotel;
                             return (

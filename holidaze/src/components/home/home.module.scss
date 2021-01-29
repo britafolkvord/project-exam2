@@ -2,7 +2,7 @@
 @import '../../sass/partials/typography';
 
 .home {
-    background-image: url(https://images.unsplash.com/photo-1580990695461-471b8e43e767?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D);
+    background-image: url('../../img/bergen.jpg');
     max-width: 100vw;
     height: 100vh;
     background-position: center;
@@ -17,6 +17,7 @@
         color: white;
         font-size: 3rem;
         font-family: $heading-font;
+        text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93;
     }
 }
 
@@ -26,23 +27,44 @@
     margin-bottom: 15%;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search {
+    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.6);
+}
+
 .homeBtn {
     background-color: $light-grey;
     font-family: $text-font;
     margin: 16px auto;
-    color: black;
+    color: $grey12;
     border: none;
     font-size: 1.4rem;
     transition: transform 0.5s;
+    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.6);
 }
 
 .homeBtn:hover {
-    color: black;
+    color: $grey12;
     background-color: $light-grey;
     transform: scale(1.1);
+}
+.homeBtn:active {
+    background-color: $light-grey !important;
+    color: $grey12 !important;
 }
 
 .btnLink {
     color: black;
     margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .search {
+        width: 90%;
+    }
 }

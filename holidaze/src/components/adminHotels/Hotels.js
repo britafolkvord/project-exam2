@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+
 import { BASE_URL, headers } from '../../constants/api';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
+
+import styles from './hotels.module.scss';
 
 function Hotels() {
     const [hotels, setHotels] = useState([]);
@@ -35,11 +38,11 @@ function Hotels() {
 
     return (
         <>
-            <Container>
+            <Container className={styles.container}>
                 <Heading title="Hotels" />
-                {error && <div className="error">{error}</div>}
+                {error && <div>{error}</div>}
 
-                <Container className="adminHotels">
+                <Container className={styles.hotels}>
                     {hotels.map((hotel) => {
                         return (
                             <Hotel

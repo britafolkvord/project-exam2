@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+
+import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
 import Heading from '../layout/Heading';
 import DeleteMessage from '../deleteMessage/DeleteMessage';
+
 import styles from './messages.module.scss';
 
 function Messages() {
@@ -30,31 +33,44 @@ function Messages() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) {
-        return <Spinner animation="border" className="spinner" />;
-    }
-
-    return (
-        <Container className={styles.messages}>
-            <Heading title="Messages" />
-            {error && <div>{error}</div>}
-            <Container className={styles.messageContainer}>
-                {messages.map((message) => {
-                    return (
-                        <div key={message.id} className={styles.message}>
-                            <h2>{message.name}</h2>
-                            <p>{message.email}</p>
-                            <p>Sent : {message.createdAt}</p>
-                            <p>{message.message}</p>
-                            <div className={styles.deleteBtn}>
-                                <DeleteMessage id={message.id} />
-                            </div>
-                        </div>
-                    );
-                })}
+    if (isEmpty(messages)) {
+        return (
+            <>
+                <Heading title="Messages" />
+                <p>No current messages</p>
+            </>
+        );
+    } else {
+        return (
+            <Container className={styles.messages}>
+                <Heading title="Messages" />
+                {error && <div>{error}</div>}
+                {loading ? (
+                    <Spinner animation="border" className="spinner" />
+                ) : (
+                    <Container className={styles.messageContainer}>
+                        {messages.map((message) => {
+                            return (
+                                <div key={message.id} className={styles.message}>
+                                    <h2 className={styles.name}>{message.name}</h2>
+                                    <p>
+                                        <span>Email : </span> {message.email}
+                                    </p>
+                                    <p>
+                                        <span>Sent : </span> {prettyDate(message.createdAt)}
+                                    </p>
+                                    <p className={styles.messageContent}>{message.message}</p>
+                                    <div className={styles.deleteBtn}>
+                                        <DeleteMessage id={message.id} />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </Container>
+                )}
             </Container>
-        </Container>
-    );
+        );
+    }
 }
 
 export default Messages;

@@ -1,7 +1,7 @@
-@import '../../sass/partials/variables';
+@import '../../../sass/partials/variables';
 
-footer {
-    background-color: #ebebeb;
+.footer {
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -38,7 +38,7 @@ footer {
 }
 
 @media (max-width: 992px) {
-    footer {
+    .footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;

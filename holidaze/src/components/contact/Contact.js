@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { BASE_URL, headers, POST } from '../../constants/api';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { Container, Button, Form, Modal } from 'react-bootstrap';
+
+import { BASE_URL, headers, POST } from '../../constants/api';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
-import { Container, Button, Form, Modal } from 'react-bootstrap';
+
 import styles from './contact.module.scss';
 
 const schema = yup.object().shape({

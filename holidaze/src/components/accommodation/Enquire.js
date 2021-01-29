@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { BASE_URL, headers, POST } from '../../constants/api';
 import { useParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { Container, Button, Form, Modal } from 'react-bootstrap';
+
+import { BASE_URL, headers, POST } from '../../constants/api';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
-import { Container, Button, Form, Modal } from 'react-bootstrap';
+
+import styles from './enquire.module.scss';
 
 const schema = yup.object().shape({
     name: yup.string().min(2, 'Name must be at least 2 characters').required('Name is required'),
@@ -58,37 +61,37 @@ function Enquire() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Container className="contact">
-                <Heading title="Enquire" />
-                <Form onSubmit={handleSubmit(onSubmit)} className="contact__form">
-                    <Form.Group>
+            <Container className={styles.enquire}>
+                <Heading title="Enquire" className={styles.heading} />
+                <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                    <Form.Group className={styles.input}>
                         <Form.Label>Name</Form.Label>
                         <Form.Control name="name" placeholder="Enter your name" ref={register} />
                         {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className={styles.input}>
                         <Form.Label>Email</Form.Label>
                         <Form.Control name="email" placeholder="Example@email.com" ref={register} />
                         {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className={styles.input}>
                         <Form.Label>Check-In date</Form.Label>
                         <Form.Control name="checkIn" type="date" ref={register} />
                         {errors.checkIn && <ErrorMessage errMsg={errors.checkIn?.message} />}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className={styles.input}>
                         <Form.Label>Check-Out date</Form.Label>
                         <Form.Control name="checkOut" type="date" ref={register} />
                         {errors.checkOut && <ErrorMessage errMsg={errors.checkOut?.message} />}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className={styles.input}>
                         <Form.Label>Establishment ID</Form.Label>
                         <Form.Control name="establishmentId" value={id} readOnly ref={register} />
                     </Form.Group>
-                    <div className="contact__form--button">
-                        <Button type="submit" className="contact__button">
+                    <div className={styles.btnContainer}>
+                        <Button type="submit" className={styles.btn}>
                             Submit
                         </Button>
                     </div>

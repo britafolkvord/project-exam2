@@ -1,13 +1,13 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { confirmAlert } from 'react-confirm-alert'
-import Button from 'react-bootstrap/Button'
-import { BASE_URL, headers, DELETE } from '../../constants/api'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import Button from 'react-bootstrap/Button';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import { BASE_URL, headers, DELETE } from '../../constants/api';
 
 function DeleteHotel(props) {
-    const history = useHistory()
+    const history = useHistory();
 
     function checkDelete() {
         confirmAlert({
@@ -21,21 +21,21 @@ function DeleteHotel(props) {
                     label: 'no',
                 },
             ],
-        })
+        });
     }
 
     async function deleteHotel() {
-        const url = BASE_URL + 'establishments/' + props.id
-        const options = { headers, method: DELETE }
-        await fetch(url, options)
-        history.push('/admin/hotels')
+        const url = BASE_URL + 'establishments/' + props.id;
+        const options = { headers, method: DELETE };
+        await fetch(url, options);
+        history.push('/admin/hotels');
     }
 
     return (
         <Button variant="danger" onClick={checkDelete}>
             Delete
         </Button>
-    )
+    );
 }
 
-export default DeleteHotel
+export default DeleteHotel;
