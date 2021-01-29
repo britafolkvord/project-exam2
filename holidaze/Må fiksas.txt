@@ -4,8 +4,7 @@ Må fiksas
 -Login vs Register??
 -Fiksa search framsiå?
 -Dashboard ser fucked ut
--css modules
-- spinner te alle sidene med fetch
+make sub-headings
 - rename .js filer med JSX te .jsx
 
 ./node_modules/.bin/prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"

@@ -11,6 +11,10 @@
     transform: scale(1.05);
 }
 
+.logoutBtn:active {
+    background-color: $clay !important;
+}
+
 @media (max-width: 992px) {
     .logoutBtn {
         padding: 8px;

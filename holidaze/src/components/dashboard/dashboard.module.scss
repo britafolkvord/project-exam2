@@ -1,23 +1,42 @@
+@import '../../sass/partials/variables';
+
 .dashboard {
     padding-top: 48px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     margin-top: 32px;
     padding: 0;
-    justify-content: flex-start;
 }
 
 .btn {
     margin-right: 8px;
     font-size: 1.1rem;
-    background-color: #bb7f63;
-    border-color: #bb7f63;
+    background-color: $clay;
+    border-color: $clay;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    transition: transform 0.5s;
+}
+
+.btn:hover {
+    background-color: $clay;
+    border-color: $clay;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: $clay !important;
+    border-color: $clay !important;
 }
 
 @media (max-width: 992px) {
