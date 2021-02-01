@@ -1,5 +1,4 @@
 @import '../../sass/partials/variables';
-@import '../../sass/partials/typography';
 
 .home {
     background-image: url('../../img/bergen.jpg');
@@ -37,34 +36,21 @@
     box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.6);
 }
 
-.homeBtn {
-    background-color: $light-grey;
-    font-family: $text-font;
-    margin: 16px auto;
-    color: $grey12;
-    border: none;
-    font-size: 1.4rem;
-    transition: transform 0.5s;
-    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.6);
-}
-
-.homeBtn:hover {
-    color: $grey12;
-    background-color: $light-grey;
-    transform: scale(1.1);
-}
-.homeBtn:active {
-    background-color: $light-grey !important;
-    color: $grey12 !important;
-}
-
-.btnLink {
-    color: black;
+.link {
+    background-color: white;
     margin: 0 auto;
 }
 
 @media (max-width: 992px) {
     .search {
         width: 90%;
+    }
+
+    .link {
+        width: 90%;
+    }
+
+    .homeContent {
+        margin-bottom: 35%;
     }
 }

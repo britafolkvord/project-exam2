@@ -1,0 +1,60 @@
+@import '../../sass/partials/variables';
+
+.form {
+    padding: 48px 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContent {
+    width: 50%;
+}
+
+.input {
+    margin-top: 16px;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.btn {
+    margin-left: 16px;
+    background-color: $blue;
+    border-color: $blue;
+    font-family: $text-font;
+    font-size: 1.1rem;
+    transition: transform 0.5s;
+}
+
+.btn:hover {
+    background-color: $blue;
+    border-color: $blue;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: $blue !important;
+    border-color: $blue !important;
+}
+
+@media (max-width: 992px) {
+    .formContent {
+        width: 90%;
+    }
+
+    .btnContainer {
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 24px;
+    }
+
+    .btn {
+        margin: 16px 0;
+    }
+}

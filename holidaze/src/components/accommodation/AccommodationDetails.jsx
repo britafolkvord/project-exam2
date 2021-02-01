@@ -81,7 +81,7 @@ function AccommodationDetails() {
                     </div>
                 </Container>
                 <Link to={`/accommodation/${id}/enquire`} className={styles.buttonContainer}>
-                    <Button className={styles.button}>Enquire</Button>
+                    <Button className={styles.button} block >Enquire</Button>
                 </Link>
                 <Route path="/accommodation/:id/enquire">
                     <Enquire />

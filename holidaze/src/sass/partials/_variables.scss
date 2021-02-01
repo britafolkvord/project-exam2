@@ -1,5 +1,13 @@
-$light-blue: #5694b3;
-$clay: #bb7f63;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+$text-font: 'Raleway', sans-serif;
+$heading-font: 'Montserrat', sans-serif;
+$logo-font: 'Fredoka One', cursive;
+
+$blue: #447c97;
+$clay: #a36548;
 $eggshell: #f7f7f7;
 $light-grey: #dddddd;
 $dark-grey: #c6c6c6;

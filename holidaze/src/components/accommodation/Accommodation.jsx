@@ -56,7 +56,8 @@ function Accommodation() {
             <Container className={styles.hotels}>
                 <Heading title="Hotels" />
                 {error && <div>{error}</div>}
-                <SearchHotels handleSearch={filterHotels} />
+                <div className={styles.content}>
+                <SearchHotels handleSearch={filterHotels} className={styles.search} />
                 {
                     <Container className={styles.container}>
                         {filteredHotels.map((hotel) => {
@@ -75,6 +76,7 @@ function Accommodation() {
                         })}
                     </Container>
                 }
+                </div>
             </Container>
         </>
     );

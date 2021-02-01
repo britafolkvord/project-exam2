@@ -4,6 +4,7 @@
     padding-top: 48px;
     margin: 0 auto;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -12,18 +13,24 @@
 .links {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
+    align-self: center;
     width: 100%;
     margin-top: 32px;
     padding: 0;
+
+    a {
+        width: 40%;
+    }
 }
 
 .btn {
-    margin-right: 8px;
     font-size: 1.1rem;
+    padding: 8px 24px;
+    width: 90%;
     background-color: $clay;
     border-color: $clay;
+    font-family: $text-font;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
     transition: transform 0.5s;
 }
@@ -49,6 +56,10 @@
 
     .links {
         flex-direction: column;
+
+        a {
+            width: 100%;
+        }
     }
 
     .btn {

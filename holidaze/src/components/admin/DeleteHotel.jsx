@@ -6,6 +6,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { BASE_URL, headers, DELETE } from '../../constants/api';
 
+import styles from './delete.module.scss';
+
 function DeleteHotel(props) {
     const history = useHistory();
 
@@ -32,7 +34,7 @@ function DeleteHotel(props) {
     }
 
     return (
-        <Button variant="danger" onClick={checkDelete}>
+        <Button variant="danger" onClick={checkDelete} className={styles.btn}>
             Delete
         </Button>
     );

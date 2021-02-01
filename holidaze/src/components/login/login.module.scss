@@ -28,14 +28,21 @@
 .btn {
     background-color: $clay;
     padding: 8px 16px;
-    border: none;
+    border-color: $clay;
     transition: transform 0.5s;
+    font-family: $text-font;
+    font-size: 1.1rem;
 }
 
 .btn:hover {
     transform: scale(1.1);
     background-color: $clay;
-    border: none;
+    border-color: $clay;
+}
+
+.btn:active {
+    border-color: $clay;
+    background-color: $clay;
 }
 
 @media (max-width: 992px) {

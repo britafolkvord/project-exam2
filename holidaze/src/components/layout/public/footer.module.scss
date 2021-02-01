@@ -1,7 +1,7 @@
 @import '../../../sass/partials/variables';
 
 .footer {
-    background-color: #ebebeb;
+    background-color: #ededed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,8 +11,8 @@
 
 .col1,
 .col2 {
-    h3 {
-        font-size: 24px;
+    p {
+        margin: auto 0;
     }
 }
 

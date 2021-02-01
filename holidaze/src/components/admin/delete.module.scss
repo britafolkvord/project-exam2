@@ -1,14 +1,18 @@
 @import '../../sass/partials/variables';
 
-.delete {
+.btn {
     transition: transform 0.5s;
-    border: none;
     font-family: $text-font;
     font-size: 1.1rem;
 }
 
-.delete:hover {
-    transform: scale(1.1);
+.btn:hover {
     background-color: #dc3545;
-    border: none;
+    border-color: #dc3545;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: #dc3545;
+    border-color: #dc3545;
 }

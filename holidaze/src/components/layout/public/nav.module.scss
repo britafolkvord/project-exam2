@@ -1,8 +1,7 @@
-@import '../../../sass/partials/typography';
 @import '../../../sass/partials/variables';
 
 .navColor {
-    background-color: #ebebeb;
+    background-color: #ededed;
 }
 
 .navbarNav {
@@ -18,7 +17,7 @@
 }
 
 .navbarBrand {
-    color: $light-blue;
+    color: $blue;
     font-size: 2rem;
     font-family: $logo-font;
     margin-right: 8px;

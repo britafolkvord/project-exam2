@@ -1,11 +1,13 @@
 @import '../../sass/partials/variables';
 
 .container {
-    padding: 0;
+    padding: 40px 0;
+    margin: 56px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #cecece;
 }
 
 .enquiriesContainer {
@@ -14,7 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    margin: 48px 0 80px;
+    margin-top: 48px;
     padding: 0;
 }
 
@@ -41,5 +43,6 @@ p {
 
     .enquiries {
         width: 90%;
+        margin: 16px auto;
     }
 }

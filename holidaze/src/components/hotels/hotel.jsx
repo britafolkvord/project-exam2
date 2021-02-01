@@ -7,7 +7,7 @@ import styles from './hotel.module.scss';
 function Hotel({ name, id, image, price, selfCatering, path, buttonText }) {
     return (
         <Card key={id} className={styles.card}>
-            <CardImg variant="top" src={image} className={styles.img} />
+            <CardImg variant="top" src={image} className={styles.img} alt={name} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <ListGroup variant="flush">

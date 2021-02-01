@@ -4,8 +4,7 @@ Må fiksas
 -Login vs Register??
 -Fiksa search framsiå?
 -Dashboard ser fucked ut
-make sub-headings
-- rename .js filer med JSX te .jsx
+-make sub-headings
+-større tekts navn på cards ?
 
 ./node_modules/.bin/prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
-
