@@ -49,10 +49,6 @@ function Home() {
         setFilteredHotels(filteredArray);
 }
 
-
-    if (loading) {
-        return <Spinner animation="border" className="spinner" />;
-    }
     console.log(filteredHotels);
 
     return (
@@ -60,14 +56,21 @@ function Home() {
             <div className={styles.homeContent}>
                 <Heading title="Find hotels in Bergen" />
                 {error && <div>{error}</div>}
-                <SearchHotels handleSearch={filterHotels}/>
-               {filteredHotels.map((hotel)=>{
-                   return(
-                       <Link to={`/accommodation/${hotel.id}`} className={styles.link}>
-                           <h2>{hotel.name}</h2>
-                       </Link>
-                   )
-               })}
+                {loading ? (
+                    <Spinner animation="border" className="spinner" />
+                ) : (
+                    <>
+                    <SearchHotels handleSearch={filterHotels}/>
+                   {filteredHotels.map((hotel)=>{
+                       return(
+                           <Link to={`/accommodation/${hotel.id}`} className={styles.link}>
+                               <h2>{hotel.name}</h2>
+                           </Link>
+                       )
+                       
+                   })}
+                   </>
+                )}
             </div>
         </header>
     );

@@ -3,15 +3,13 @@ import React, { createContext, useState } from 'react'
 const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
-    const existingUser = localStorage.getItem('user') || null
+    const existingUser = localStorage.getItem('username') || null
     const existingPassword = localStorage.getItem('password') || null
 
     const [user, setUser] = useState(existingUser)
     const [password, setPassword] = useState(existingPassword)
 
-    function registerUser(username, userPassword) {
-        localStorage.setItem('user', JSON.stringify(username))
-        localStorage.setItem('password', JSON.stringify(userPassword))
+    function loginUser(username, userPassword) {
 
         setUser(username)
         setPassword(userPassword)
@@ -20,11 +18,11 @@ const AuthContextProvider = ({ children }) => {
     function logout() {
         setUser(null)
         setPassword(null)
-        localStorage.removeItem('user')
+        localStorage.removeItem('username')
         localStorage.removeItem('password')
     }
 
-    return <AuthContext.Provider value={{ user, password, registerUser, logout }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ user, password, loginUser, logout }}>{children}</AuthContext.Provider>
 }
 
 export { AuthContext, AuthContextProvider }

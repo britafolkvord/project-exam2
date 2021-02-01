@@ -52,7 +52,8 @@ export default function Contact() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Container className={styles.contact}>
+            <Container className={styles.contact} fluid>
+                <div className={styles.column}>
                 <Heading title="Contact" />
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                     <Form.Group>
@@ -84,6 +85,7 @@ export default function Contact() {
                         </Button>
                     </div>
                 </Form>
+                </div>
             </Container>
         </>
     );

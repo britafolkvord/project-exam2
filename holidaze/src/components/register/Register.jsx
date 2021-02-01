@@ -1,25 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useHistory, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 
-import { AuthContext } from '../../context/AuthContext';
+
 import Heading from '../layout/Heading';
+import ErrorMessage from '../error/ErrorMessage';
 
 import styles from './register.module.scss';
 
+const schema = yup.object().shape({
+    username: yup.string().min(4, 'Username must be at least 4 characters').required('Username is required'),
+    password: yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+});
+
 function Register() {
-    const { register, handleSubmit } = useForm();
-    const { registerUser } = useContext(AuthContext);
+    const { register, errors, handleSubmit } = useForm({
+        resolver: yupResolver(schema),
+    });
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+      setPasswordShown(passwordShown ? false : true);
+    };
+    
 
     const history = useHistory();
 
     function onSubmit(data) {
         console.log('data', data);
-        registerUser(data.username, data.password);
-        history.push('/admin/dashboard');
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('password', data.password);
+        history.push('/login');
     }
 
     return (
@@ -31,18 +46,23 @@ function Register() {
                 </p>
                 <div className={styles.form}>
                     <Form.Group className={styles.input}>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Username</Form.Label>
                         <Form.Control name="username" placeholder="Enter your username" ref={register} />
+                        {errors.username && <ErrorMessage errMsg={errors.username?.message} />}
                     </Form.Group>
 
                     <Form.Group className={styles.input}>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             name="password"
-                            type="password"
+                            type={passwordShown ? "text" : "password"}
                             placeholder="Enter your password"
                             ref={register}
                         />
+                        {errors.password && <ErrorMessage errMsg={errors.password?.message} />}
+                        <div className={styles.passwordVisibility}>
+                            <Form.Label onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>{passwordShown ? "Hide password" : "Show password" }</Form.Label>
+                            </div>
                     </Form.Group>
 
                     <div className={styles.btnContainer}>

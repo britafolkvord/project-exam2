@@ -1,12 +1,29 @@
 @import '../../sass/partials/variables';
 
 .contact {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../img/bg.jpg');
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
-    margin: 48px auto;
+    margin: auto 0;
 }
 
 .contactForm {
-    margin: 48px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-top: 32px;
 }
 
 .contactFormBtn {
@@ -38,6 +55,19 @@
 
 @media (max-width: 992px) {
     .contact {
+        width: 100%;
+        background-image: none;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .column {
+        width: 100%;
+        margin: 48px auto;
+    }
+
+    .contactForm {
         width: 90%;
     }
 }
