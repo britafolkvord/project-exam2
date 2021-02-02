@@ -2,7 +2,6 @@ Må fiksas
 
 
 
--Fiksa search framsiå?
 -Dashboard ser fucked ut
 -make sub-headings
 -større tekts navn på cards ?

@@ -23,7 +23,15 @@
 .homeContent {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15%;
+    margin-top: 10%;
+    margin-bottom: 25%;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .form {
@@ -39,6 +47,18 @@
 .link {
     background-color: white;
     margin: 0 auto;
+    color: $grey12;
+    width: 90%;
+    padding: 8px;
+    font-family: $text-font;
+
+    h2 {
+        font-size: 1rem;
+    }
+}
+
+.link:hover {
+    color: $grey12;
 }
 
 @media (max-width: 992px) {

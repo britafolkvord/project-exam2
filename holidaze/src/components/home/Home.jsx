@@ -10,6 +10,7 @@ import SearchHotels from '../search/searchHotels';
 
 
 
+
 function Home() {
     const [hotels, setHotels] = useState([]);
     const [filteredHotels, setFilteredHotels] = useState([]);
@@ -46,7 +47,13 @@ function Home() {
             }
             return false;
         });
+        
+        if(searchValue){
         setFilteredHotels(filteredArray);
+    }else{
+        setFilteredHotels([]);
+    }
+
 }
 
     console.log(filteredHotels);
