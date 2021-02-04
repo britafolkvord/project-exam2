@@ -18,6 +18,10 @@
     margin: 16px 0;
 }
 
+.label {
+    font-family: $text-font;
+}
+
 .btnContainer {
     display: flex;
     flex-direction: row;

@@ -8,7 +8,7 @@ import { BASE_URL, headers, DELETE } from '../../constants/api';
 
 import styles from './delete.module.scss';
 
-function DeleteMessage(props) {
+function DeleteEnquiry(props) {
     const history = useHistory();
     console.log(props.id);
 
@@ -18,7 +18,7 @@ function DeleteMessage(props) {
             buttons: [
                 {
                     label: 'yes',
-                    onClick: () => deleteMessage(),
+                    onClick: () => deleteEnquiry(),
                 },
                 {
                     label: 'no',
@@ -27,8 +27,8 @@ function DeleteMessage(props) {
         });
     }
 
-    async function deleteMessage() {
-        const url = BASE_URL + 'contacts/' + props.id;
+    async function deleteEnquiry() {
+        const url = BASE_URL + 'enquiries/' + props.id;
         const options = { headers, method: DELETE };
         await fetch(url, options);
         history.go(0);
@@ -41,4 +41,4 @@ function DeleteMessage(props) {
     );
 }
 
-export default DeleteMessage;
+export default DeleteEnquiry;

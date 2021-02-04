@@ -3,7 +3,8 @@ import { Container, Spinner } from 'react-bootstrap';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
-import Heading from '../layout/Heading';
+import SubHeading from '../layout/SubHeading';
+import DeleteEnquiry from '../deleteEnquiry/DeleteEnquiry';
 
 import styles from './enquiries.module.scss';
 
@@ -36,14 +37,14 @@ function Enquiries() {
     if (isEmpty(enquiries)) {
         return (
             <>
-                <Heading title="Enquiries" />
+                <SubHeading title="Enquiries" />
                 <p>No current enquiries</p>
             </>
         );
     } else {
         return (
             <Container className={styles.container}>
-                <Heading title="Enquiries" />
+                <SubHeading title="Enquiries" />
                 {error && <div>{error}</div>}
                 {loading ? (
                     <Spinner animation="border" className="spinner" />
@@ -57,6 +58,9 @@ function Enquiries() {
                                 <p><span>Check-in date :</span> {prettyDate(enquiry.checkIn)}</p>
                                 <p><span>Check-out date :</span> {prettyDate(enquiry.checkOut)}</p>
                                 <p><span>Establishment Id :</span> {enquiry.establishmentId}</p>
+                                <div className={styles.deleteBtn}>
+                                <DeleteEnquiry id={enquiry.id} />
+                                </div>
                             </div>
                         );
                     })}

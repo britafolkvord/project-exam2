@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 
 import { BASE_URL, headers } from '../../constants/api';
+import FilterHotels from '../filterHotels/FilterHotels';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
-import SearchHotels from '../search/searchHotels';
+
 
 import styles from './accommodation.module.scss';
 
@@ -22,7 +23,6 @@ function Accommodation() {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json);
-                // handle error
                 if (json.error) {
                     setHotels([]);
                     setError(json.message);
@@ -36,15 +36,40 @@ function Accommodation() {
     }, []);
 
     const filterHotels = function (e) {
-        const searchValue = e.target.value.toLowerCase();
+        const searchValue = e.target.value;
+        console.log(e.target.id);
+        if(e.target.id === "price"){
+            const filteredArray = hotels.filter(function (hotel) {
+                const maxPrice = hotel.price;
+                if(searchValue <= maxPrice){
+                    return true;
+                }
+                return false;
+            })
+            setFilteredHotels(filteredArray);
+        }else if(e.target.id === "guests"){
+            const filteredArray = hotels.filter(function (hotel) {
+                const maximumGuests = hotel.maxGuests;
+                if (searchValue <= maximumGuests) {
+                    return true;
+                }
+                return false;
+        })
+    
+        setFilteredHotels(filteredArray);
+    }else{
+        console.log(searchValue);
         const filteredArray = hotels.filter(function (hotel) {
-            const lowerCaseName = hotel.name.toLowerCase();
-            if (lowerCaseName.startsWith(searchValue)) {
+            const selfCatering = hotel.selfCatering;
+            if(searchValue === selfCatering){
                 return true;
             }
             return false;
-        });
+        })
         setFilteredHotels(filteredArray);
+    };
+
+
     };
 
     if (loading) {
@@ -57,18 +82,17 @@ function Accommodation() {
                 <Heading title="Hotels" />
                 {error && <div>{error}</div>}
                 <div className={styles.content}>
-                <SearchHotels handleSearch={filterHotels} className={styles.search} />
+                <FilterHotels handleSearch={filterHotels} />
                 {
                     <Container className={styles.container}>
                         {filteredHotels.map((hotel) => {
-                            const { id, name, image, price, selfCatering } = hotel;
+                            const { id, name, image, description } = hotel;
                             return (
                                 <Hotel
                                     key={id}
                                     name={name}
                                     image={image}
-                                    price={price}
-                                    selfCatering={selfCatering}
+                                    description={description}
                                     path={'../accommodation/' + id}
                                     buttonText={'More info'}
                                 />

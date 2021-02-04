@@ -69,7 +69,7 @@ function Login() {
                     </p>
                     <div className={styles.form}>
                         <Form.Group className={styles.input}>
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Username</Form.Label>
                             <Form.Control name="username" placeholder="Enter your username" ref={register} />
                             {errors.username && <ErrorMessage errMsg={errors.username?.message} />}
                         </Form.Group>

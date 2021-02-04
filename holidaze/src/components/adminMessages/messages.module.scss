@@ -1,11 +1,14 @@
+@import '../../sass/partials/variables';
+
 .messages {
     width: 100%;
-    margin: 56px 0;
+    margin: 72px 0 56px;
     padding: 40px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #cecece;
+    border-radius: 8px;
 }
 
 .messageContainer {
@@ -22,8 +25,13 @@
     width: 40%;
     padding: 24px;
     margin: 8px;
-    background-color: #fffffff3;
-    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    font-family: $text-font;
+    background: rgba(255, 255, 255, 0.383);
+    box-shadow: 0 8px 16px 0 rgba(102, 102, 104, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .name {
@@ -32,6 +40,7 @@
 
 span {
     font-weight: 700;
+    font-family: $text-font;
 }
 
 .messageContent {

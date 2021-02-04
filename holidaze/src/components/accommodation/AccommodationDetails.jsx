@@ -58,6 +58,9 @@ function AccommodationDetails() {
                         <p className={styles.p}>Price : {hotel.price}$ per night</p>
                         <p className={styles.p}>Maximum guests : {hotel.maxGuests}</p>
                         <p className={styles.p}>Self Catering : {hotel.selfCatering ? 'Yes' : 'No'}</p>
+                        <Link to={`/accommodation/${id}/enquire`} className={styles.buttonContainer}>
+                    <Button className={styles.button} block >Enquire</Button>
+                </Link>
                     </div>
                 </Container>
                 <Container className={styles.reviewContainer}>
@@ -80,9 +83,6 @@ function AccommodationDetails() {
                         <p>"My family and myself had a great time staying at {hotel.name}. 10/10 would recommend! "</p>
                     </div>
                 </Container>
-                <Link to={`/accommodation/${id}/enquire`} className={styles.buttonContainer}>
-                    <Button className={styles.button} block >Enquire</Button>
-                </Link>
                 <Route path="/accommodation/:id/enquire">
                     <Enquire />
                 </Route>

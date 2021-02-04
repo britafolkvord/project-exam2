@@ -26,6 +26,10 @@
     margin-top: 32px;
 }
 
+.label {
+    font-family: $text-font;
+}
+
 .contactFormBtn {
     display: flex;
     flex-direction: row;
@@ -40,6 +44,7 @@
     font-size: 1.1rem;
     transition: transform 0.5s;
     margin-top: 16px;
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
 }
 
 .submitBtn:hover {

@@ -4,28 +4,17 @@ import { Link } from 'react-router-dom';
 
 import styles from './hotel.module.scss';
 
-function Hotel({ name, id, image, price, selfCatering, path, buttonText }) {
+function Hotel({ name, id, image, path, buttonText, description }) {
     return (
         <Card key={id} className={styles.card}>
             <CardImg variant="top" src={image} className={styles.img} alt={name} />
             <Card.Body>
-                <Card.Title>{name}</Card.Title>
+                <Card.Title className={styles.hotelName}>{name}</Card.Title>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
                         <p>
-                            <span>Price :</span> {price}
+                         {description}
                         </p>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                        {selfCatering ? (
-                            <p>
-                                <span>Self-catering : </span>Yes
-                            </p>
-                        ) : (
-                            <p>
-                                <span>Self-catering : </span>No
-                            </p>
-                        )}
                     </ListGroup.Item>
                 </ListGroup>
                 <Link to={path} className={styles.link}>

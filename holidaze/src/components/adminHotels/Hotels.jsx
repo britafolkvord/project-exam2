@@ -48,8 +48,7 @@ function Hotels() {
                             <Hotel
                                 name={hotel.name}
                                 image={hotel.image}
-                                price={hotel.price}
-                                selfCatering={hotel.selfCatering}
+                                description={hotel.description}
                                 path={`/admin/hotels/edit/${hotel.id}`}
                                 buttonText={'Edit hotel'}
                             />

@@ -14,9 +14,8 @@
         flex-wrap: wrap;
         margin-top: 32px;
         padding: 0;
-        //box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-        background: rgba(237, 237, 237, 0.7);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        background: rgba(186, 186, 187, 0.7);
+        box-shadow: 0 8px 8px 0 rgba(14, 14, 15, 0.37);
         backdrop-filter: blur(3.5px);
         -webkit-backdrop-filter: blur(3.5px);
         border-radius: 10px;
@@ -25,6 +24,7 @@
         .image {
             max-height: 400px;
             width: 50%;
+            border-radius: 10px;
         }
 
         .info {
@@ -35,10 +35,14 @@
             padding: 24px;
 
             .p {
-                padding: 24px;
-                border: 1px solid $grey12;
+                padding: 16px;
+                background: rgba(255, 255, 255, 0.52);
+                box-shadow: 0 8px 8px 0 rgba(103, 104, 112, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
                 font-size: 1.2rem;
-                background-color: #ffffff;
                 text-align: center;
                 margin: 8px 0;
             }
@@ -61,6 +65,7 @@
     .review {
         width: 30%;
         border: 1px solid grey;
+        border-radius: 8px;
         padding: 24px;
         margin: 8px;
 
@@ -70,10 +75,10 @@
     }
 
     .buttonContainer {
-        margin-top: 40px;
         text-decoration: none;
         border-color: $blue;
-        width: 90%;
+        width: 100%;
+        margin-top: 8px;
 
         .button {
             padding: 8px 24px;

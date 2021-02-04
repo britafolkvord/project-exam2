@@ -3,7 +3,7 @@ import { Container, Spinner } from 'react-bootstrap';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
-import Heading from '../layout/Heading';
+import SubHeading from '../layout/SubHeading';
 import DeleteMessage from '../deleteMessage/DeleteMessage';
 
 import styles from './messages.module.scss';
@@ -36,14 +36,14 @@ function Messages() {
     if (isEmpty(messages)) {
         return (
             <>
-                <Heading title="Messages" />
+                <SubHeading title="Messages" />
                 <p>No current messages</p>
             </>
         );
     } else {
         return (
             <Container className={styles.messages}>
-                <Heading title="Messages" />
+                <SubHeading title="Messages" />
                 {error && <div>{error}</div>}
                 {loading ? (
                     <Spinner animation="border" className="spinner" />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Container, Button, Form, Modal } from 'react-bootstrap';
 
@@ -17,8 +18,12 @@ const schema = yup.object().shape({
 });
 
 export default function Contact() {
+    const history = useHistory();
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+    setShow(false)
+    history.go(0)
+}
     const handleShow = () => setShow(true);
     const { register, errors, handleSubmit } = useForm({
         resolver: yupResolver(schema),
@@ -57,19 +62,18 @@ export default function Contact() {
                 <Heading title="Contact" />
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                     <Form.Group>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label className={styles.label}>Name</Form.Label>
                         <Form.Control name="name" placeholder="Enter your name" ref={register} />
                         {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                     </Form.Group>
-
                     <Form.Group>
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label className={styles.label}>Email</Form.Label>
                         <Form.Control name="email" placeholder="Example@email.com" ref={register} />
                         {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>Message</Form.Label>
+                        <Form.Label className={styles.label}>Message</Form.Label>
                         <Form.Control
                             name="message"
                             placeholder="Type your message here"

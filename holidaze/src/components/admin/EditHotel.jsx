@@ -51,7 +51,7 @@ function AddHotel() {
                 <Heading title="Edit Hotel"/>
                 <Container className={styles.formContent}>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label className={styles.label}>Name</Form.Label>
                     <Form.Control
                         name="name"
                         defaultValue={hotel.name}
@@ -59,9 +59,8 @@ function AddHotel() {
                         ref={register}
                     />
                 </Form.Group>
-
                 <Form.Group className={styles.input}>
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label className={styles.label}>Email</Form.Label>
                     <Form.Control
                         name="email"
                         defaultValue={hotel.email}
@@ -70,7 +69,7 @@ function AddHotel() {
                     />
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Price</Form.Label>
+                    <Form.Label className={styles.label}>Price</Form.Label>
                     <Form.Control
                         name="price"
                         defaultValue={hotel.price}
@@ -79,7 +78,7 @@ function AddHotel() {
                     />
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Max guests</Form.Label>
+                    <Form.Label className={styles.label}>Max guests</Form.Label>
                     <Form.Control
                         name="maxGuests"
                         defaultValue={hotel.maxGuests}
@@ -88,7 +87,7 @@ function AddHotel() {
                     />
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Self-catering</Form.Label>
+                    <Form.Label className={styles.label}>Self-catering</Form.Label>
                     <Form.Control
                         name="selfCatering"
                         defaultValue={hotel.selfCatering}
@@ -97,7 +96,7 @@ function AddHotel() {
                     />
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label className={styles.label}>Description</Form.Label>
                     <Form.Control
                         name="description"
                         defaultValue={hotel.description}
@@ -108,7 +107,7 @@ function AddHotel() {
                     />
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label>Image</Form.Label>
+                    <Form.Label className={styles.label}>Image</Form.Label>
                     <Form.Control name="image" defaultValue={hotel.image} placeholder={hotel.image} ref={register} />
                 </Form.Group>
                 <div className={styles.btnContainer}>
