@@ -8,10 +8,15 @@ import DeleteEnquiry from '../deleteEnquiry/DeleteEnquiry';
 
 import styles from './enquiries.module.scss';
 
+const Status = {
+    Loading: 0,
+    Success: 1,
+    Error: 2,
+};
+
 function Enquiries() {
     const [enquiries, setEnquiries] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [status, setStatus] = useState(Status.Loading);
 
     useEffect(() => {
         const url = BASE_URL + 'enquiries';
@@ -21,54 +26,65 @@ function Enquiries() {
             .then((response) => response.json())
             .then((json) => {
                 console.table(json);
-                // handle error
+
+                // Handle error in .catch()
                 if (json.error) {
-                    setEnquiries([]);
-                    setError(json.message);
+                    throw new Error('Error fetching enquiries');
                 } else {
                     setEnquiries(json);
+                    setStatus(Status.Success);
                 }
             })
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+            .catch((error) => {
+                console.log(error);
+                setStatus(Status.Error);
+            });
     }, []);
 
+    return (
+        <Container className={styles.container}>
+            <SubHeading title="Enquiries" />
+            <Container className={styles.enquiriesContainer}>
+                {status === Status.Error ? (
+                    <p>
+                        Something went wrong while fetching enquiries.{' '}
+                        <button onClick={() => window.location.reload(0)}>Try again!</button>
+                    </p>
+                ) : null}
 
-    if (isEmpty(enquiries)) {
-        return (
-            <>
-                <SubHeading title="Enquiries" />
-                <p>No current enquiries</p>
-            </>
-        );
-    } else {
-        return (
-            <Container className={styles.container}>
-                <SubHeading title="Enquiries" />
-                {error && <div>{error}</div>}
-                {loading ? (
-                    <Spinner animation="border" className="spinner" />
-                ) : (
-                    <Container className={styles.enquiriesContainer}>
-                    {enquiries.map((enquiry) => {
-                        return (
-                            <div key={enquiry.id} className={styles.enquiries}>
-                                <h2 className={styles.name}>{enquiry.name}</h2>
-                                <p><span>Email :</span> {enquiry.email}</p>
-                                <p><span>Check-in date :</span> {prettyDate(enquiry.checkIn)}</p>
-                                <p><span>Check-out date :</span> {prettyDate(enquiry.checkOut)}</p>
-                                <p><span>Establishment Id :</span> {enquiry.establishmentId}</p>
-                                <div className={styles.deleteBtn}>
-                                <DeleteEnquiry id={enquiry.id} />
+                {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
+
+                {status === Status.Success && isEmpty(enquiries) ? <p>No current enquiries.</p> : null}
+
+                {status === Status.Success && !isEmpty(enquiries) ? (
+                    <>
+                        {enquiries.map((enquiry) => {
+                            return (
+                                <div key={enquiry.id} className={styles.enquiries}>
+                                    <h2 className={styles.name}>{enquiry.name}</h2>
+                                    <p>
+                                        <span>Email :</span> {enquiry.email}
+                                    </p>
+                                    <p>
+                                        <span>Check-in date :</span> {prettyDate(enquiry.checkIn)}
+                                    </p>
+                                    <p>
+                                        <span>Check-out date :</span> {prettyDate(enquiry.checkOut)}
+                                    </p>
+                                    <p>
+                                        <span>Establishment Id :</span> {enquiry.establishmentId}
+                                    </p>
+                                    <div className={styles.deleteBtn}>
+                                        <DeleteEnquiry id={enquiry.id} />
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
-                </Container>
-                )}
+                            );
+                        })}
+                    </>
+                ) : null}
             </Container>
-        );
-    }
+        </Container>
+    );
 }
 
 export default Enquiries;

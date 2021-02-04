@@ -1,5 +1,6 @@
 export function prettyDate(dateString) {
-    return new Date(dateString.split('T')[0]).toDateString();
+    console.log(dateString);
+    return new Date(dateString).toDateString();
 }
 
 export function isEmpty(arr) {

@@ -72,16 +72,15 @@ function Accommodation() {
 
     };
 
-    if (loading) {
-        return <Spinner animation="border" className="spinner" />;
-    }
-
     return (
         <>
             <Container className={styles.hotels}>
                 <Heading title="Hotels" />
                 {error && <div>{error}</div>}
-                <div className={styles.content}>
+                {loading ? (
+                    <Spinner animation="border" className="spinner" />
+                ) : (
+                    <div className={styles.content}>
                 <FilterHotels handleSearch={filterHotels} />
                 {
                     <Container className={styles.container}>
@@ -101,6 +100,7 @@ function Accommodation() {
                     </Container>
                 }
                 </div>
+                )}
             </Container>
         </>
     );

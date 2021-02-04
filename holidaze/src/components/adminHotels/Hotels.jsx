@@ -32,17 +32,17 @@ function Hotels() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) {
-        return <Spinner animation="border" className="spinner" />;
-    }
+
 
     return (
         <>
             <Container className={styles.container}>
                 <Heading title="Hotels" />
                 {error && <div>{error}</div>}
-
-                <Container className={styles.hotels}>
+                {loading ? (
+                    <Spinner animation="border" className="spinner" />
+                ) : (
+                    <Container className={styles.hotels}>
                     {hotels.map((hotel) => {
                         return (
                             <Hotel
@@ -55,6 +55,7 @@ function Hotels() {
                         );
                     })}
                 </Container>
+                )}
             </Container>
         </>
     );
