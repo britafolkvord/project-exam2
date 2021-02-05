@@ -46,7 +46,7 @@
 }
 
 .btn:active {
-    background-color: $clay;
+    background-color: $clay !important;
 }
 
 @media (max-width: 992px) {

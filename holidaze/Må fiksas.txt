@@ -3,13 +3,15 @@ Må fiksas
 
 
 -Dashboard ser fucked ut
--større tekts navn på cards ?
 -enquire ser kjip ut
 -contact ipad pro
 
--prettydate lage datoen te dagen før
--trap focus enquire
--pil ned tastatur på search home page
--focus pseudo element kalender ?
+
+Alle sider me fetch
+history.go(0) istede for window.reload
+style try again knapp
+
+
+
 
 ./node_modules/.bin/prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"

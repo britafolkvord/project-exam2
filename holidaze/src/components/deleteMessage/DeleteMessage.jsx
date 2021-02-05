@@ -10,7 +10,6 @@ import styles from './delete.module.scss';
 
 function DeleteMessage(props) {
     const history = useHistory();
-    console.log(props.id);
 
     function checkDelete() {
         confirmAlert({

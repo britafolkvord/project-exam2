@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
@@ -8,10 +9,16 @@ import DeleteMessage from '../deleteMessage/DeleteMessage';
 
 import styles from './messages.module.scss';
 
+const Status = {
+    Loading: 0,
+    Success: 1,
+    Error: 2,
+};
+
 function Messages() {
     const [messages, setMessages] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [status, setStatus] = useState(Status.Loading);
+    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'contacts';
@@ -20,57 +27,57 @@ function Messages() {
         fetch(url, options)
             .then((response) => response.json())
             .then((json) => {
-                console.table(json);
-                // handle error
+                // Handle error in .catch()
                 if (json.error) {
-                    setMessages([]);
-                    setError(json.message);
+                    throw new Error('Error fetching messages');
                 } else {
                     setMessages(json);
+                    setStatus(Status.Success);
                 }
             })
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+            .catch((error) => {
+                console.log(error);
+                setStatus(Status.Error);
+            });
     }, []);
 
-    if (isEmpty(messages)) {
-        return (
-            <>
-                <SubHeading title="Messages" />
-                <p>No current messages</p>
-            </>
-        );
-    } else {
-        return (
-            <Container className={styles.messages}>
-                <SubHeading title="Messages" />
-                {error && <div>{error}</div>}
-                {loading ? (
-                    <Spinner animation="border" className="spinner" />
-                ) : (
-                    <Container className={styles.messageContainer}>
-                        {messages.map((message) => {
-                            return (
-                                <div key={message.id} className={styles.message}>
-                                    <h2 className={styles.name}>{message.name}</h2>
-                                    <p>
-                                        <span>Email : </span> {message.email}
-                                    </p>
-                                    <p>
-                                        <span>Sent : </span> {prettyDate(message.createdAt)}
-                                    </p>
-                                    <p className={styles.messageContent}>{message.message}</p>
-                                    <div className={styles.deleteBtn}>
-                                        <DeleteMessage id={message.id} />
-                                    </div>
+    return (
+        <Container className={styles.messages}>
+            <SubHeading title="Messages" />
+            {status === Status.Error ? (
+                <p>
+                    Something went wrong while fetching messages.
+                    <button onClick={() => history.go(0)}>Try again!</button>
+                </p>
+            ) : null}
+
+            {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
+
+            {status === Status.Success && isEmpty(messages) ? <p>No current messages.</p> : null}
+
+            {status === Status.Success && !isEmpty(messages) ? (
+                <Container className={styles.messageContainer}>
+                    {messages.map((message) => {
+                        return (
+                            <div key={message.id} className={styles.message}>
+                                <h2 className={styles.name}>{message.name}</h2>
+                                <p>
+                                    <span>Email : </span> {message.email}
+                                </p>
+                                <p>
+                                    <span>Sent : </span> {prettyDate(message.createdAt)}
+                                </p>
+                                <p className={styles.messageContent}>{message.message}</p>
+                                <div className={styles.deleteBtn}>
+                                    <DeleteMessage id={message.id} />
                                 </div>
-                            );
-                        })}
-                    </Container>
-                )}
-            </Container>
-        );
-    }
+                            </div>
+                        );
+                    })}
+                </Container>
+            ) : null}
+        </Container>
+    );
 }
 
 export default Messages;

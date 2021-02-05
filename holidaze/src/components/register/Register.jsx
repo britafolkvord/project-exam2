@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 
-
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -24,14 +23,12 @@ function Register() {
     });
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
-      setPasswordShown(passwordShown ? false : true);
+        setPasswordShown(passwordShown ? false : true);
     };
-    
 
     const history = useHistory();
 
     function onSubmit(data) {
-        console.log('data', data);
         localStorage.setItem('username', data.username);
         localStorage.setItem('password', data.password);
         history.push('/login');
@@ -46,25 +43,25 @@ function Register() {
                 </p>
                 <div className={styles.form}>
                     <Form.Group className={styles.input}>
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label className={styles.label}>Username</Form.Label>
                         <Form.Control name="username" placeholder="Enter your username" ref={register} />
                         {errors.username && <ErrorMessage errMsg={errors.username?.message} />}
                     </Form.Group>
-
                     <Form.Group className={styles.input}>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className={styles.label}>Password</Form.Label>
                         <Form.Control
                             name="password"
-                            type={passwordShown ? "text" : "password"}
+                            type={passwordShown ? 'text' : 'password'}
                             placeholder="Enter your password"
                             ref={register}
                         />
                         {errors.password && <ErrorMessage errMsg={errors.password?.message} />}
                         <div className={styles.passwordVisibility}>
-                            <Form.Label onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>{passwordShown ? "Hide password" : "Show password" }</Form.Label>
-                            </div>
+                            <Form.Label onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>
+                                {passwordShown ? 'Hide password' : 'Show password'}
+                            </Form.Label>
+                        </div>
                     </Form.Group>
-
                     <div className={styles.btnContainer}>
                         <Button type="submit" className={styles.btn}>
                             Register

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './hotel.module.scss';
 
-function Hotel({ name, id, image, path, buttonText, description }) {
+function Hotel({ name, id, image, path, buttonText, price, selfCatering, maxGuests }) {
     return (
         <Card key={id} className={styles.card}>
             <CardImg variant="top" src={image} className={styles.img} alt={name} />
@@ -12,9 +12,13 @@ function Hotel({ name, id, image, path, buttonText, description }) {
                 <Card.Title className={styles.hotelName}>{name}</Card.Title>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
-                        <p>
-                         {description}
-                        </p>
+                        <p>Max number of guests: {maxGuests}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        <p>Price per night: {price}$</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        <p>Self-catering: {selfCatering}</p>
                     </ListGroup.Item>
                 </ListGroup>
                 <Link to={path} className={styles.link}>

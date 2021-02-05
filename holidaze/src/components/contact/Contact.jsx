@@ -19,12 +19,12 @@ const schema = yup.object().shape({
 
 export default function Contact() {
     const history = useHistory();
-    const [show, setShow] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const handleClose = () => {
-    setShow(false)
-    history.go(0)
-}
-    const handleShow = () => setShow(true);
+        setShowModal(false);
+        history.go(0);
+    };
+    const handleShow = () => setShowModal(true);
     const { register, errors, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
@@ -35,16 +35,14 @@ export default function Contact() {
         const options = { headers, method: POST };
         options.body = JSON.stringify(data);
 
-        fetch(url, options)
-            .then((r) => r.json())
-            .then((j) => console.log(j));
+        fetch(url, options).then((r) => r.json());
 
         handleShow();
     }
 
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Your message has been sent!</Modal.Title>
                 </Modal.Header>
@@ -59,36 +57,36 @@ export default function Contact() {
             </Modal>
             <Container className={styles.contact} fluid>
                 <div className={styles.column}>
-                <Heading title="Contact" />
-                <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
-                    <Form.Group>
-                        <Form.Label className={styles.label}>Name</Form.Label>
-                        <Form.Control name="name" placeholder="Enter your name" ref={register} />
-                        {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className={styles.label}>Email</Form.Label>
-                        <Form.Control name="email" placeholder="Example@email.com" ref={register} />
-                        {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
-                    </Form.Group>
+                    <Heading title="Contact" />
+                    <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
+                        <Form.Group>
+                            <Form.Label className={styles.label}>Name</Form.Label>
+                            <Form.Control name="name" placeholder="Enter your name" ref={register} />
+                            {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.label}>Email</Form.Label>
+                            <Form.Control name="email" placeholder="Example@email.com" ref={register} />
+                            {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
+                        </Form.Group>
 
-                    <Form.Group>
-                        <Form.Label className={styles.label}>Message</Form.Label>
-                        <Form.Control
-                            name="message"
-                            placeholder="Type your message here"
-                            as="textarea"
-                            rows={5}
-                            ref={register}
-                        />
-                        {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
-                    </Form.Group>
-                    <div className={styles.contactFormBtn}>
-                        <Button type="submit" className={styles.submitBtn}>
-                            Submit
-                        </Button>
-                    </div>
-                </Form>
+                        <Form.Group>
+                            <Form.Label className={styles.label}>Message</Form.Label>
+                            <Form.Control
+                                name="message"
+                                placeholder="Type your message here"
+                                as="textarea"
+                                rows={5}
+                                ref={register}
+                            />
+                            {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
+                        </Form.Group>
+                        <div className={styles.contactFormBtn}>
+                            <Button type="submit" className={styles.submitBtn}>
+                                Submit
+                            </Button>
+                        </div>
+                    </Form>
                 </div>
             </Container>
         </>

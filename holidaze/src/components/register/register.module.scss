@@ -19,11 +19,16 @@
     margin: 32px 0;
 }
 
+.label {
+    font-family: $text-font;
+}
+
 .passwordVisibility {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 8px;
+    font-family: $text-font;
 }
 
 .showPassword:hover {

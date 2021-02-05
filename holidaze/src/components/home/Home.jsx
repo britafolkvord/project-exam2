@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Heading from '../layout/Heading';
 import { BASE_URL, headers } from '../../constants/api';
+import SearchHotels from '../search/searchHotels';
+import { isEmpty } from '../../utils';
 
 import styles from './home.module.scss';
-import SearchHotels from '../search/searchHotels';
 
-
-
+const Status = {
+    Loading: 0,
+    Success: 1,
+    Error: 2,
+};
 
 function Home() {
     const [hotels, setHotels] = useState([]);
     const [filteredHotels, setFilteredHotels] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [status, setStatus] = useState(Status.Loading);
+    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -24,21 +28,21 @@ function Home() {
         fetch(url, options)
             .then((response) => response.json())
             .then((json) => {
-                console.log(json);
-                // handle error
+                // Handle error in .catch()
                 if (json.error) {
-                    setHotels([]);
-                    setError(json.message);
+                    throw new Error('Error fetching enquiries');
                 } else {
                     setHotels(json);
+                    setStatus(Status.Success);
                 }
             })
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+            .catch((error) => {
+                console.log(error);
+                setStatus(Status.Error);
+            });
     }, []);
 
-
-    const filterHotels = function (e){
+    const filterHotels = function (e) {
         const searchValue = e.target.value.toLowerCase();
         const filteredArray = hotels.filter(function (hotel) {
             const lowerCaseName = hotel.name.toLowerCase();
@@ -47,55 +51,42 @@ function Home() {
             }
             return false;
         });
-        
-        if(searchValue){
-        setFilteredHotels(filteredArray);
-    }else{
-        setFilteredHotels([]);
-    }
 
-}
-
-    console.log(filteredHotels);
+        if (searchValue) {
+            setFilteredHotels(filteredArray);
+        } else {
+            setFilteredHotels([]);
+        }
+    };
 
     return (
         <header className={styles.home}>
             <div className={styles.homeContent}>
                 <Heading title="Find hotels in Bergen" />
-                {error && <div>{error}</div>}
-                {loading ? (
-                    <Spinner animation="border" className="spinner" />
-                ) : (
-                    <>
-                    <SearchHotels handleSearch={filterHotels}/>
-                   {filteredHotels.map((hotel)=>{
-                       return(
-                           <Link to={`/accommodation/${hotel.id}`} className={styles.link}>
-                               <h2>{hotel.name}</h2>
-                           </Link>
-                       )
-                       
-                   })}
-                   </>
-                )}
+                <SearchHotels handleSearch={filterHotels} />
+                {filteredHotels.map((hotel) => {
+                    return (
+                        <>
+                            {status === Status.Error ? (
+                                <p>
+                                    Something went wrong while fetching hotels.
+                                    <button onClick={() => history.go(0)}>Try again!</button>
+                                </p>
+                            ) : null}
+                            {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
+
+                            {status === Status.Success && isEmpty(filteredHotels) ? <p>No current enquiries.</p> : null}
+                            {status === Status.Success && !isEmpty(filteredHotels) ? (
+                                <Link to={`/accommodation/${hotel.id}`} className={styles.link}>
+                                    <h2>{hotel.name}</h2>
+                                </Link>
+                            ) : null}
+                        </>
+                    );
+                })}
             </div>
         </header>
     );
 }
 
 export default Home;
-
-/*
-
-Vil at det ska vises som dropdown når der e matches te søket, men at ingentign vises før någe e skreve inn i searchHotels
-
- {filteredHotels.map((hotel) => {
-     return (
-         <Link to="/accommodation/hotel/id">
-         <h2>{hotel.name}</h2>
-         </Link>
-     )
- }
-
-
-*/

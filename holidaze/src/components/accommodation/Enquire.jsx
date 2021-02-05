@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -14,45 +14,51 @@ import styles from './enquire.module.scss';
 const schema = yup.object().shape({
     name: yup.string().min(2, 'Name must be at least 2 characters').required('Name is required'),
     email: yup.string().email('Please enter a valid email').required('Email is required'),
-    checkIn: yup.date().required('A check-in date must be selected'),
+    checkIn: yup
+        .date()
+        .typeError('Check-in must be of type date')
+        .min(new Date(), 'Check-in date must be at a later date than today')
+        .required('A check-in date must be selected'),
     checkOut: yup
         .date()
+        .typeError('Check-out must be of type date')
         .when(
             'checkIn',
-            (checkIn, schema) => checkIn && schema.min(checkIn, 'The check-out date must be after the check-in day')
+            (checkIn, schema) => checkIn && schema.min(checkIn, 'The check-out date must be after the check-in date')
         )
         .required('A check-out date must be selected'),
 });
 
 function Enquire() {
     const history = useHistory();
-    const [show, setShow] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const handleClose = () => {
-        setShow(false)
-        history.go(0)
+        setShowModal(false);
+        history.go(0);
     };
-    const handleShow = () => setShow(true);
+    const handleShow = () => setShowModal(true);
     let { id } = useParams();
     const { register, errors, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
+    const ref = useCallback((element) => {
+        if (element) {
+            window.scrollTo({ top: element.offsetTop });
+        }
+    }, []);
 
     function onSubmit(data) {
-        console.log(data);
         const url = BASE_URL + 'enquiries';
         const options = { headers, method: POST };
         options.body = JSON.stringify(data);
 
-        fetch(url, options)
-            .then((r) => r.json())
-            .then((j) => console.log(j));
-
+        fetch(url, options).then((r) => r.json());
         handleShow();
     }
 
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Your enquiry has been sent!</Modal.Title>
                 </Modal.Header>
@@ -65,7 +71,7 @@ function Enquire() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Container className={styles.enquire}>
+            <Container ref={ref} className={styles.enquire}>
                 <Heading title="Enquire" className={styles.heading} />
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <Form.Group className={styles.input}>
@@ -73,20 +79,18 @@ function Enquire() {
                         <Form.Control name="name" placeholder="Enter your name" ref={register} />
                         {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                     </Form.Group>
-
                     <Form.Group className={styles.input}>
                         <Form.Label className={styles.label}>Email</Form.Label>
                         <Form.Control name="email" placeholder="Example@email.com" ref={register} />
                         {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                     </Form.Group>
-
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Check-In date</Form.Label>
+                        <Form.Label className={styles.label}>Check-in date</Form.Label>
                         <Form.Control name="checkIn" type="date" ref={register} />
                         {errors.checkIn && <ErrorMessage errMsg={errors.checkIn?.message} />}
                     </Form.Group>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Check-Out date</Form.Label>
+                        <Form.Label className={styles.label}>Check-out date</Form.Label>
                         <Form.Control name="checkOut" type="date" ref={register} />
                         {errors.checkOut && <ErrorMessage errMsg={errors.checkOut?.message} />}
                     </Form.Group>

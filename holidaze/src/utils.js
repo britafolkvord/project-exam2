@@ -1,5 +1,4 @@
 export function prettyDate(dateString) {
-    console.log(dateString);
     return new Date(dateString).toDateString();
 }
 

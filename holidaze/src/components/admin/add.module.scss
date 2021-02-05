@@ -45,8 +45,8 @@
 }
 
 .btn:active {
-    background-color: $blue;
-    border-color: $blue;
+    background-color: $blue !important;
+    border-color: $blue !important;
 }
 
 @media (max-width: 992px) {

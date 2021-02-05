@@ -1,28 +1,55 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 
+import SubHeading from '../layout/SubHeading';
 
-export default function FilterHotels({ handleSearch }) {
+import styles from './filter.module.scss';
+
+export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, maxGuests, setMaxGuests }) {
     return (
-        <Form>
-        <Form.Group>
-            <Form.Label>Number of guests</Form.Label>
-            <Form.Control type="number" id="guests" onChange={(event) => handleSearch(event)} />
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Max price per night</Form.Label>
-            <Form.Control  id="price" type="number" onChange={(event) => handleSearch(event)} />
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Self-catering</Form.Label>
-            <Form.Check  id="true" value={true} inline label="Yes" onChange={(event) => handleSearch(event)} />
-            <Form.Check  id="false" value={false} inline label="No" onChange={(event) => handleSearch(event)} />
-        </Form.Group>
-        </Form>
+        <Container className={styles.filter}>
+            <SubHeading title="Filter by" />
+            <Form className={styles.form}>
+                <Form.Group className={styles.input}>
+                    <Form.Label className={styles.label}>Number of guests</Form.Label>
+                    <Form.Control
+                        id="guests"
+                        value={maxGuests}
+                        onChange={(event) =>
+                            Number(event.target.value) >= 0 ? setMaxGuests(event.target.value) : undefined
+                        }
+                    />
+                </Form.Group>
+                <Form.Group className={styles.input}>
+                    <Form.Label className={styles.label}>Max $ per night</Form.Label>
+                    <Form.Control
+                        id="price"
+                        value={maxPrice}
+                        onChange={(event) =>
+                            Number(event.target.value) >= 0 ? setMaxPrice(event.target.value) : undefined
+                        }
+                    />
+                </Form.Group>
+                <Form.Group className={styles.catering}>
+                    <Form.Label className={styles.label}>Self-catering</Form.Label>
+                    <div className={styles.radio}>
+                        <Form.Check
+                            inline
+                            label="Yes"
+                            name="catering"
+                            type={'radio'}
+                            onChange={() => setSelfCatering(true)}
+                        />
+                        <Form.Check
+                            inline
+                            label="No"
+                            name="catering"
+                            type={'radio'}
+                            onChange={() => setSelfCatering(false)}
+                        />
+                    </div>
+                </Form.Group>
+            </Form>
+        </Container>
     );
 }
-
-FilterHotels.propTypes = {
-    handleSearch: PropTypes.func.isRequired,
-};

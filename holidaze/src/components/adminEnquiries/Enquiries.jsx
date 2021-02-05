@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
@@ -17,6 +18,7 @@ const Status = {
 function Enquiries() {
     const [enquiries, setEnquiries] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
+    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'enquiries';
@@ -25,8 +27,6 @@ function Enquiries() {
         fetch(url, options)
             .then((response) => response.json())
             .then((json) => {
-                console.table(json);
-
                 // Handle error in .catch()
                 if (json.error) {
                     throw new Error('Error fetching enquiries');
@@ -48,7 +48,7 @@ function Enquiries() {
                 {status === Status.Error ? (
                     <p>
                         Something went wrong while fetching enquiries.{' '}
-                        <button onClick={() => window.location.reload(0)}>Try again!</button>
+                        <button onClick={() => history.go(0)}>Try again!</button>
                     </p>
                 ) : null}
 

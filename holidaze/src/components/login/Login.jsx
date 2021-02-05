@@ -16,44 +16,41 @@ const schema = yup.object().shape({
     password: yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
 });
 
-
 function Login() {
     const { register, errors, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
     const { loginUser } = useContext(AuthContext);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
-      setPasswordShown(passwordShown ? false : true);
+        setPasswordShown(passwordShown ? false : true);
     };
-
 
     const history = useHistory();
 
     function onSubmit(data) {
-        console.log('data', data);
         const user = localStorage.getItem('username');
         const userPassword = localStorage.getItem('password');
-        if(user === data.username && userPassword === data.password){
+        if (user === data.username && userPassword === data.password) {
             loginUser(data.username, data.password);
             history.push('/admin/dashboard');
-        }else{
+        } else {
             handleShow();
         }
     }
 
     return (
         <>
-        <Modal show={show} onHide={handleClose}>
+            <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Something's not right</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Check to see if you've entered the right username and password. If you don't have an 
-                    account you can go here to <Link to="/register">register</Link>.
+                    Check to see if you've entered the right username and password. If you don't have an account you can
+                    go here to <Link to="/register">register</Link>.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -69,22 +66,28 @@ function Login() {
                     </p>
                     <div className={styles.form}>
                         <Form.Group className={styles.input}>
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label className={styles.label}>Username</Form.Label>
                             <Form.Control name="username" placeholder="Enter your username" ref={register} />
                             {errors.username && <ErrorMessage errMsg={errors.username?.message} />}
                         </Form.Group>
 
                         <Form.Group className={styles.input}>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className={styles.label}>Password</Form.Label>
                             <Form.Control
                                 name="password"
-                                type={passwordShown ? "text" : "password"}
+                                type={passwordShown ? 'text' : 'password'}
                                 placeholder="Enter your password"
                                 ref={register}
                             />
                             {errors.password && <ErrorMessage errMsg={errors.password?.message} />}
                             <div className={styles.passwordVisibility}>
-                            <Form.Label onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>{passwordShown ? "Hide password" : "Show password" }</Form.Label>
+                                <Form.Label
+                                    onClick={togglePasswordVisiblity}
+                                    tabIndex={0}
+                                    className={styles.showPassword}
+                                >
+                                    {passwordShown ? 'Hide password' : 'Show password'}
+                                </Form.Label>
                             </div>
                         </Form.Group>
 

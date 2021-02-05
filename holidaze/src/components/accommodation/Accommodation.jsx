@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import { BASE_URL, headers } from '../../constants/api';
 import FilterHotels from '../filterHotels/FilterHotels';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
-
+import { isEmpty } from '../../utils';
 
 import styles from './accommodation.module.scss';
+
+const Status = {
+    Loading: 0,
+    Success: 1,
+    Error: 2,
+};
 
 function Accommodation() {
     const [hotels, setHotels] = useState([]);
     const [filteredHotels, setFilteredHotels] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [selfCatering, setSelfCatering] = useState(null);
+    const [maxPrice, setMaxPrice] = useState('');
+    const [maxGuests, setMaxGuests] = useState('');
+    const [status, setStatus] = useState(Status.Loading);
+    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -22,85 +32,95 @@ function Accommodation() {
         fetch(url, options)
             .then((response) => response.json())
             .then((json) => {
-                console.log(json);
+                // Handle error in .catch()
                 if (json.error) {
-                    setHotels([]);
-                    setError(json.message);
+                    throw new Error('Error fetching enquiries');
                 } else {
                     setHotels(json);
-                    setFilteredHotels(json);
+                    setStatus(Status.Success);
                 }
             })
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+            .catch((error) => {
+                console.log(error);
+                setStatus(Status.Error);
+            });
     }, []);
 
-    const filterHotels = function (e) {
-        const searchValue = e.target.value;
-        console.log(e.target.id);
-        if(e.target.id === "price"){
-            const filteredArray = hotels.filter(function (hotel) {
-                const maxPrice = hotel.price;
-                if(searchValue <= maxPrice){
-                    return true;
+    const filterHotels = useEffect(() => {
+        const filtered = hotels
+            .filter((hotel) => {
+                if (maxPrice) {
+                    return hotel.price <= Number(maxPrice);
                 }
-                return false;
-            })
-            setFilteredHotels(filteredArray);
-        }else if(e.target.id === "guests"){
-            const filteredArray = hotels.filter(function (hotel) {
-                const maximumGuests = hotel.maxGuests;
-                if (searchValue <= maximumGuests) {
-                    return true;
-                }
-                return false;
-        })
-    
-        setFilteredHotels(filteredArray);
-    }else{
-        console.log(searchValue);
-        const filteredArray = hotels.filter(function (hotel) {
-            const selfCatering = hotel.selfCatering;
-            if(searchValue === selfCatering){
+
                 return true;
-            }
-            return false;
-        })
-        setFilteredHotels(filteredArray);
-    };
+            })
+            .filter((hotel) => {
+                if (maxGuests) {
+                    return hotel.maxGuests >= Number(maxGuests);
+                }
+                return true;
+            })
+            .filter((hotel) => {
+                if (selfCatering !== null) {
+                    return hotel.selfCatering === selfCatering;
+                }
 
+                return true;
+            });
 
-    };
+        setFilteredHotels(filtered);
+    }, [hotels, maxGuests, maxPrice, selfCatering]);
 
     return (
         <>
             <Container className={styles.hotels}>
                 <Heading title="Hotels" />
-                {error && <div>{error}</div>}
-                {loading ? (
-                    <Spinner animation="border" className="spinner" />
-                ) : (
-                    <div className={styles.content}>
-                <FilterHotels handleSearch={filterHotels} />
-                {
-                    <Container className={styles.container}>
-                        {filteredHotels.map((hotel) => {
-                            const { id, name, image, description } = hotel;
-                            return (
-                                <Hotel
-                                    key={id}
-                                    name={name}
-                                    image={image}
-                                    description={description}
-                                    path={'../accommodation/' + id}
-                                    buttonText={'More info'}
-                                />
-                            );
-                        })}
-                    </Container>
-                }
+                <div className={styles.content}>
+                    <FilterHotels
+                        handleSearch={filterHotels}
+                        {...{ maxGuests, setMaxGuests, setSelfCatering, maxPrice, setMaxPrice }}
+                        setSelfCatering={setSelfCatering}
+                    />
+                    {
+                        <Container className={styles.container}>
+                            {filteredHotels.map((hotel) => {
+                                const { id, name, image, price, maxGuests, selfCatering } = hotel;
+                                return (
+                                    <>
+                                        {status === Status.Error ? (
+                                            <p>
+                                                Something went wrong while fetching hotels.
+                                                <button onClick={() => history.go(0)}>Try again!</button>
+                                            </p>
+                                        ) : null}
+
+                                        {status === Status.Loading ? (
+                                            <Spinner animation="border" className="spinner" />
+                                        ) : null}
+
+                                        {status === Status.Success && isEmpty(filteredHotels) ? (
+                                            <p>There are currently no hotels listed.</p>
+                                        ) : null}
+
+                                        {status === Status.Success && !isEmpty(filteredHotels) ? (
+                                            <Hotel
+                                                key={id}
+                                                name={name}
+                                                image={image}
+                                                price={price}
+                                                maxGuests={maxGuests}
+                                                selfCatering={selfCatering ? 'Yes' : 'No'}
+                                                path={'../accommodation/' + id}
+                                                buttonText={'More info'}
+                                            />
+                                        ) : null}
+                                    </>
+                                );
+                            })}
+                        </Container>
+                    }
                 </div>
-                )}
             </Container>
         </>
     );
