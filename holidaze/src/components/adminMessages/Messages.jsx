@@ -45,9 +45,11 @@ function Messages() {
         <Container className={styles.messages}>
             <SubHeading title="Messages" />
             {status === Status.Error ? (
-                <p>
+                <p className={styles.errorMessage}>
                     Something went wrong while fetching messages.
-                    <button onClick={() => history.go(0)}>Try again!</button>
+                    <button onClick={() => history.go(0)} className={styles.reload}>
+                        Try again!
+                    </button>
                 </p>
             ) : null}
 

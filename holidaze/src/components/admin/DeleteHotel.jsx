@@ -11,7 +11,7 @@ import styles from './delete.module.scss';
 function DeleteHotel(props) {
     const history = useHistory();
 
-    function checkDelete() {
+    const checkDelete = () => {
         confirmAlert({
             title: 'Confirm deletion',
             buttons: [
@@ -24,14 +24,14 @@ function DeleteHotel(props) {
                 },
             ],
         });
-    }
+    };
 
-    async function deleteHotel() {
+    const deleteHotel = async () => {
         const url = BASE_URL + 'establishments/' + props.id;
         const options = { headers, method: DELETE };
         await fetch(url, options);
-        history.push('/admin/hotels');
-    }
+        history.push('/admin/adminHotels/hotels');
+    };
 
     return (
         <Button variant="danger" onClick={checkDelete} className={styles.btn}>

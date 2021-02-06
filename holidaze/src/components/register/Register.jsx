@@ -28,11 +28,11 @@ function Register() {
 
     const history = useHistory();
 
-    function onSubmit(data) {
+    const onSubmit = (data) => {
         localStorage.setItem('username', data.username);
         localStorage.setItem('password', data.password);
         history.push('/login');
-    }
+    };
 
     return (
         <Container>

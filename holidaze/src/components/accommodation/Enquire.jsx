@@ -47,14 +47,14 @@ function Enquire() {
         }
     }, []);
 
-    function onSubmit(data) {
+    const onSubmit = (data) => {
         const url = BASE_URL + 'enquiries';
         const options = { headers, method: POST };
         options.body = JSON.stringify(data);
 
         fetch(url, options).then((r) => r.json());
         handleShow();
-    }
+    };
 
     return (
         <>

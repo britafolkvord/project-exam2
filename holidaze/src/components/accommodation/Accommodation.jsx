@@ -89,9 +89,11 @@ function Accommodation() {
                                 return (
                                     <>
                                         {status === Status.Error ? (
-                                            <p>
+                                            <p className={styles.errorMessage}>
                                                 Something went wrong while fetching hotels.
-                                                <button onClick={() => history.go(0)}>Try again!</button>
+                                                <button onClick={() => history.go(0)} className={styles.reload}>
+                                                    Try again!
+                                                </button>
                                             </p>
                                         ) : null}
 

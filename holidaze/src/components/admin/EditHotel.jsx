@@ -84,20 +84,22 @@ function AddHotel() {
         // eslint-disable-next-line
     }, []);
 
-    async function onSubmit(data) {
+    const onSubmit = async (data) => {
         const updateOptions = { headers, method: PATCH, body: JSON.stringify(data) };
         await fetch(fetchUrl, updateOptions);
-        history.push('/admin/hotels');
-    }
+        history.push('/admin/adminHotels/hotels');
+    };
 
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <Heading title="Edit Hotel" />
                 {status === Status.Error ? (
-                    <p>
+                    <p className={styles.errorMessage}>
                         Something went wrong while fetching the hotel.
-                        <button onClick={() => history.go(0)}>Try again!</button>
+                        <button onClick={() => history.go(0)} className={styles.reload}>
+                            Try again!
+                        </button>
                     </p>
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}

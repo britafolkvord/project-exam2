@@ -39,12 +39,12 @@ function AddHotel() {
 
     const history = useHistory();
 
-    async function onSubmit(data) {
+    const onSubmit = async (data) => {
         const url = BASE_URL + 'establishments';
         const options = { headers, method: 'POST', body: JSON.stringify(data) };
         await fetch(url, options);
-        history.push('/admin/hotels');
-    }
+        history.push('/admin/adminHotels/hotels');
+    };
 
     return (
         <Container className={styles.container}>

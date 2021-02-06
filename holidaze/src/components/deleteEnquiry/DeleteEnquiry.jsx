@@ -11,7 +11,7 @@ import styles from './delete.module.scss';
 function DeleteEnquiry(props) {
     const history = useHistory();
 
-    function checkDelete() {
+    const checkDelete = () => {
         confirmAlert({
             title: 'Confirm deletion',
             buttons: [
@@ -24,14 +24,14 @@ function DeleteEnquiry(props) {
                 },
             ],
         });
-    }
+    };
 
-    async function deleteEnquiry() {
+    const deleteEnquiry = async () => {
         const url = BASE_URL + 'enquiries/' + props.id;
         const options = { headers, method: DELETE };
         await fetch(url, options);
         history.go(0);
-    }
+    };
 
     return (
         <Button variant="danger" onClick={checkDelete} className={styles.delete}>

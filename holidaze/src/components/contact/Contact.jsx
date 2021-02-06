@@ -29,8 +29,7 @@ export default function Contact() {
         resolver: yupResolver(schema),
     });
 
-    function onSubmit(data) {
-        //console.log(data);
+    const onSubmit = (data) => {
         const url = BASE_URL + 'contacts';
         const options = { headers, method: POST };
         options.body = JSON.stringify(data);
@@ -38,7 +37,7 @@ export default function Contact() {
         fetch(url, options).then((r) => r.json());
 
         handleShow();
-    }
+    };
 
     return (
         <>

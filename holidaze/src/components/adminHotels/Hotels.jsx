@@ -48,7 +48,9 @@ function Hotels() {
                 {status === Status.Error ? (
                     <p>
                         Something went wrong while fetching the hotel.
-                        <button onClick={() => history.go(0)}>Try again!</button>
+                        <button onClick={() => history.go(0)} className={styles.reload}>
+                            Try again!
+                        </button>
                     </p>
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}

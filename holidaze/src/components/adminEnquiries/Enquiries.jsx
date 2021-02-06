@@ -46,9 +46,11 @@ function Enquiries() {
             <SubHeading title="Enquiries" />
             <Container className={styles.enquiriesContainer}>
                 {status === Status.Error ? (
-                    <p>
+                    <p className={styles.errorMessage}>
                         Something went wrong while fetching enquiries.{' '}
-                        <button onClick={() => history.go(0)}>Try again!</button>
+                        <button onClick={() => history.go(0)} className={styles.reload}>
+                            Try again!
+                        </button>
                     </p>
                 ) : null}
 

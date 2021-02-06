@@ -42,9 +42,9 @@ function Home() {
             });
     }, []);
 
-    const filterHotels = function (e) {
+    const filterHotels = (e) => {
         const searchValue = e.target.value.toLowerCase();
-        const filteredArray = hotels.filter(function (hotel) {
+        const filteredArray = hotels.filter((hotel) => {
             const lowerCaseName = hotel.name.toLowerCase();
             if (lowerCaseName.startsWith(searchValue)) {
                 return true;
@@ -68,9 +68,11 @@ function Home() {
                     return (
                         <>
                             {status === Status.Error ? (
-                                <p>
+                                <p className={styles.errorMessage}>
                                     Something went wrong while fetching hotels.
-                                    <button onClick={() => history.go(0)}>Try again!</button>
+                                    <button onClick={() => history.go(0)} className={styles.reload}>
+                                        Try again!
+                                    </button>
                                 </p>
                             ) : null}
                             {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}

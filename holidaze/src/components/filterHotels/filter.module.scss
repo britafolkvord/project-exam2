@@ -2,7 +2,7 @@
 
 .filter {
     background-color: #ededed;
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,6 +26,15 @@
 .input {
     width: 30%;
     margin: 0 8px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: row;
+}
+
+.output {
+    margin-left: 8px;
 }
 
 .catering {

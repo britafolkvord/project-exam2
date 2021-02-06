@@ -31,7 +31,7 @@ function Login() {
 
     const history = useHistory();
 
-    function onSubmit(data) {
+    const onSubmit = (data) => {
         const user = localStorage.getItem('username');
         const userPassword = localStorage.getItem('password');
         if (user === data.username && userPassword === data.password) {
@@ -40,7 +40,7 @@ function Login() {
         } else {
             handleShow();
         }
-    }
+    };
 
     return (
         <>
