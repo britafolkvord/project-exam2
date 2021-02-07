@@ -18,10 +18,10 @@
 
 .footerLink {
     color: #000000;
-}
 
-.footerLink:hover {
-    color: #000000;
+    &:hover {
+        color: #000000;
+    }
 }
 
 .bi {
@@ -30,11 +30,11 @@
     height: 24px;
     width: 24px;
     transition: transform 0.5s;
-}
 
-.bi:hover {
-    transform: scale(1.2);
-    cursor: pointer;
+    &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 992px) {

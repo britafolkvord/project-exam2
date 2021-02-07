@@ -32,12 +32,14 @@
     font-family: $text-font;
 }
 
-.showPassword:hover {
-    text-decoration: underline;
-}
+.showPassword {
+    &:hover {
+        text-decoration: underline;
+    }
 
-.showPassword:focus {
-    padding: 2px;
+    &:focus {
+        padding: 2px;
+    }
 }
 
 .btnContainer {
@@ -53,17 +55,17 @@
     transition: transform 0.5s;
     font-family: $text-font;
     font-size: 1.1rem;
-}
 
-.btn:hover {
-    transform: scale(1.1);
-    background-color: $clay;
-    border-color: $clay;
-}
+    &:hover {
+        transform: scale(1.1);
+        background-color: $clay;
+        border-color: $clay;
+    }
 
-.btn:active {
-    border-color: $clay !important;
-    background-color: $clay !important;
+    &:active {
+        border-color: $clay !important;
+        background-color: $clay !important;
+    }
 }
 
 @media (max-width: 992px) {

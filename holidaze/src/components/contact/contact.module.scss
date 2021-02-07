@@ -45,17 +45,17 @@
     transition: transform 0.5s;
     margin-top: 16px;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
-}
 
-.submitBtn:hover {
-    transform: scale(1.05);
-    background-color: $blue;
-    border-color: $blue;
-}
+    &:hover {
+        transform: scale(1.05);
+        background-color: $blue;
+        border-color: $blue;
+    }
 
-.submitBtn:active {
-    background-color: $blue;
-    border-color: $blue;
+    &:active {
+        background-color: $blue;
+        border-color: $blue;
+    }
 }
 
 @media (max-width: 992px) {

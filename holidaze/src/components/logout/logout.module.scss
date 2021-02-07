@@ -6,15 +6,15 @@
     transition: transform 0.5s;
     font-family: $text-font;
     font-size: 1.1rem;
-}
 
-.logoutBtn:hover {
-    background-color: $clay;
-    transform: scale(1.05);
-}
+    &:hover {
+        background-color: $clay;
+        transform: scale(1.05);
+    }
 
-.logoutBtn:active {
-    background-color: $clay !important;
+    &:active {
+        background-color: $clay !important;
+    }
 }
 
 @media (max-width: 992px) {

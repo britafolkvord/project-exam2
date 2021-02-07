@@ -27,17 +27,17 @@
     border: none;
     transition: transform 0.5s;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
-}
 
-.btn:hover {
-    background-color: $blue;
-    border: none;
-    transform: scale(1.05);
-    text-decoration: none;
-}
+    &:hover {
+        background-color: $blue;
+        border: none;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
 
-.btn:active {
-    background-color: $blue !important;
+    &:active {
+        background-color: $blue !important;
+    }
 }
 
 .link:hover {

@@ -14,6 +14,11 @@
 
 .logoLink {
     transition: transform 0.5s;
+
+    &:hover {
+        text-decoration: none;
+        transform: scale(1.05);
+    }
 }
 
 .navbarBrand {
@@ -21,11 +26,6 @@
     font-size: 2rem;
     font-family: $logo-font;
     margin-right: 8px;
-}
-
-.logoLink:hover {
-    text-decoration: none;
-    transform: scale(1.05);
 }
 
 .navbarContent {
@@ -40,12 +40,12 @@
     color: $grey12;
     margin: 0 8px;
     transition: transform 0.5s;
-}
 
-.navLink:hover {
-    text-decoration: none;
-    color: $grey12;
-    transform: scale(1.05);
+    &:hover {
+        text-decoration: none;
+        color: $grey12;
+        transform: scale(1.05);
+    }
 }
 
 .login {
@@ -53,6 +53,12 @@
     flex-direction: row;
     align-items: center;
     color: $grey12;
+
+    &:hover {
+        text-decoration: none;
+        color: $grey12;
+        transform: scale(1.05);
+    }
 }
 
 .bi {
@@ -60,12 +66,6 @@
     height: 16px;
     fill: $grey12;
     margin-left: 8px;
-}
-
-.login:hover {
-    text-decoration: none;
-    color: $grey12;
-    transform: scale(1.05);
 }
 
 .active {

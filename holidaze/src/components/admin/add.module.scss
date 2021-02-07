@@ -36,17 +36,17 @@
     transition: transform 0.5s;
     margin-top: 16px;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
-}
 
-.btn:hover {
-    transform: scale(1.05);
-    background-color: $blue;
-    border-color: $blue;
-}
+    &:hover {
+        transform: scale(1.05);
+        background-color: $blue;
+        border-color: $blue;
+    }
 
-.btn:active {
-    background-color: $blue !important;
-    border-color: $blue !important;
+    &:active {
+        background-color: $blue !important;
+        border-color: $blue !important;
+    }
 }
 
 @media (max-width: 992px) {
