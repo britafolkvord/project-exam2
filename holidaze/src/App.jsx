@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/routes/ProtectedRoute';
 import Home from './components/home/Home';

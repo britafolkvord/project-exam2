@@ -1,7 +1,7 @@
 @import '../../../sass/partials/variables';
 
 .navColor {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .navbarNav {
@@ -17,7 +17,7 @@
 }
 
 .navbarBrand {
-    color: black;
+    color: #000000;
     font-size: 2rem;
     font-family: $logo-font;
     margin-right: 8px;
@@ -69,7 +69,7 @@
 }
 
 .active {
-    color: black;
+    color: #000000;
     text-decoration: underline;
 }
 

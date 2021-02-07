@@ -18,11 +18,11 @@
         flex-direction: column;
         margin-top: 32px;
         padding: 0;
-        background: #e6e5e5b3;
-        box-shadow: 0 8px 8px 0 #19191a5e;
+        background: rgba(230, 229, 229, 0.702);
+        box-shadow: 0 8px 8px 0 rgba(25, 25, 26, 0.369);
         backdrop-filter: blur(3.5px);
         -webkit-backdrop-filter: blur(3.5px);
-        border: 1px solid #ffffff2e;
+        border: 1px solid rgba(255, 255, 255, 0.18);
 
         .image {
             max-height: 400px;
@@ -97,7 +97,7 @@
             font-size: 1.4rem;
             background-color: $blue;
             border-color: $blue;
-            color: white;
+            color: #ffffff;
             font-family: $text-font;
             box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
             transition: transform 0.5s;

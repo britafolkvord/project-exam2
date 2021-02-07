@@ -12,7 +12,7 @@ import styles from './nav.module.scss';
 function PublicNav() {
     const { user } = useContext(AuthContext);
     return (
-        <div className="menu">
+        <div>
             <Navbar className={styles.navColor} expand="lg">
                 <NavLink to="/" exact className={styles.logoLink}>
                     <div className={styles.navbarBrand}>Holidaze</div>

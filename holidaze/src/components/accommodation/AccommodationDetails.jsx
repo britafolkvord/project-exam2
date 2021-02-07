@@ -56,7 +56,7 @@ function AccommodationDetails() {
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {status === Status.Success ? (
                     <>
-                        <Heading title={hotel.name} className={styles.heading} />
+                        <Heading title={hotel.name} />
                         <Container className={styles.description}>
                             <p>{hotel.description}</p>
                             <p>

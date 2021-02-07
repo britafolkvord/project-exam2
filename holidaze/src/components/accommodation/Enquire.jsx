@@ -72,7 +72,7 @@ function Enquire() {
                 </Modal.Footer>
             </Modal>
             <Container ref={ref} className={styles.enquire}>
-                <Heading title="Enquire" className={styles.heading} />
+                <Heading title="Enquire" />
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <Form.Group className={styles.input}>
                         <Form.Label className={styles.label}>Name</Form.Label>

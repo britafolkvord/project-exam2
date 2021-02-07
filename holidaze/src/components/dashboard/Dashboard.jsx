@@ -12,7 +12,7 @@ function Dashboard() {
     return (
         <>
             <Container className={styles.dashboard}>
-                <Heading title="Dashboard" className={styles.heading} />
+                <Heading title="Dashboard" />
                 <Container className={styles.links}>
                     <NavLink to="../admin/adminHotels/hotels">
                         <Button className={styles.btn}>Hotels</Button>

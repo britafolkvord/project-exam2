@@ -3,9 +3,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useHistory, Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Container } from 'react-bootstrap';
+import { Container, Button, Form } from 'react-bootstrap';
 
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';

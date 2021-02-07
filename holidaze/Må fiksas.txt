@@ -1,16 +1,14 @@
 Må fiksas
 
--Dashboard ser fucked ut
--enquire ser kjip ut
-
-Range vs text input?
-Fikse alle functions te arrow(bortsett fra components tho)
 Se over scss
 Slette yarn.lock
 
+ Admin
+ active class når inne på admin sider ikkje bare dashboard
 
+Alle buttons/links
+&:hover
+&:active
 
 ./node_modules/.bin/prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
  
- Admin
- active class når inne på admin sider ikkje bare dashboard
