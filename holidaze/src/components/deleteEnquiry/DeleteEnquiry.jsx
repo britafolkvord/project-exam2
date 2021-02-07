@@ -26,10 +26,10 @@ function DeleteEnquiry(props) {
         });
     };
 
-    const deleteEnquiry = async () => {
+    const deleteEnquiry = () => {
         const url = BASE_URL + 'enquiries/' + props.id;
         const options = { headers, method: DELETE };
-        await fetch(url, options);
+        fetch(url, options);
         history.go(0);
     };
 

@@ -26,10 +26,10 @@ function DeleteMessage(props) {
         });
     };
 
-    const deleteMessage = async () => {
+    const deleteMessage = () => {
         const url = BASE_URL + 'contacts/' + props.id;
         const options = { headers, method: DELETE };
-        await fetch(url, options);
+        fetch(url, options);
         history.go(0);
     };
 
