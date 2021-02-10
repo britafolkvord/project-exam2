@@ -16,17 +16,21 @@ function Navigation({ admin }) {
     return (
         <div>
             <Navbar className={`${admin ? styles.admin : ''} ${styles.nav}`} expand="lg">
-                <NavLink to="/" exact className={styles.logoLink}>
+                <NavLink to={Routes.home} exact className={styles.logoLink}>
                     <div className={styles.navbarBrand}>Holidaze</div>
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className={styles.dropdown}>
                     <Nav className={styles.navbarNav}>
                         <div className={styles.navbarContent}>
-                            <NavLink to="/accommodation" className={styles.navLink} activeClassName={styles.active}>
+                            <NavLink
+                                to={Routes.accommodation.accommodation}
+                                className={styles.navLink}
+                                activeClassName={styles.active}
+                            >
                                 Hotels
                             </NavLink>
-                            <NavLink to="/contact" className={styles.navLink} activeClassName={styles.active}>
+                            <NavLink to={Routes.contact} className={styles.navLink} activeClassName={styles.active}>
                                 Contact
                             </NavLink>
                         </div>
@@ -35,7 +39,7 @@ function Navigation({ admin }) {
                             {user ? (
                                 <>
                                     <NavLink
-                                        to="/admin/dashboard"
+                                        to={Routes.admin.dashboard}
                                         className={styles.navLink}
                                         activeClassName={styles.active}
                                     >
@@ -44,11 +48,7 @@ function Navigation({ admin }) {
                                     <LogOut />
                                 </>
                             ) : (
-                                <NavLink
-                                    to={Routes.login.login}
-                                    className={styles.login}
-                                    activeClassName={styles.active}
-                                >
+                                <NavLink to={Routes.login} className={styles.login} activeClassName={styles.active}>
                                     Login
                                     <PersonCircle className={styles.icon} />
                                 </NavLink>
