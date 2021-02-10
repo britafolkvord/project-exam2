@@ -1,10 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { BASE_URL, headers, DELETE } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 
 import styles from './delete.module.scss';
 
@@ -16,11 +17,11 @@ function DeleteHotel(props) {
             title: 'Confirm deletion',
             buttons: [
                 {
-                    label: 'yes',
+                    label: 'Yes',
                     onClick: () => deleteHotel(),
                 },
                 {
-                    label: 'no',
+                    label: 'No',
                 },
             ],
         });
@@ -30,7 +31,7 @@ function DeleteHotel(props) {
         const url = BASE_URL + 'establishments/' + props.id;
         const options = { headers, method: DELETE };
         await fetch(url, options);
-        history.push('/admin/adminHotels/hotels');
+        history.push(Routes.admin.hotels.hotels);
     };
 
     return (

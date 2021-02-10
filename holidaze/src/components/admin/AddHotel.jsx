@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Form, Container } from 'react-bootstrap';
 
 import { BASE_URL, headers } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -46,7 +47,7 @@ function AddHotel() {
         const url = BASE_URL + 'establishments';
         const options = { headers, method: 'POST', body: JSON.stringify(data) };
         await fetch(url, options);
-        history.push('/admin/adminHotels/hotels');
+        history.push(Routes.admin.hotels.hotels);
     };
 
     return (

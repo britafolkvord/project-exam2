@@ -6,6 +6,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Button, Container, Form, Spinner } from 'react-bootstrap';
 
 import { BASE_URL, headers, PATCH } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import DeleteHotel from './DeleteHotel';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
@@ -87,7 +88,7 @@ function AddHotel() {
     const onSubmit = async (data) => {
         const updateOptions = { headers, method: PATCH, body: JSON.stringify(data) };
         await fetch(fetchUrl, updateOptions);
-        history.push('/admin/adminHotels/hotels');
+        history.push(Routes.admin.hotels.hotels);
     };
 
     return (
