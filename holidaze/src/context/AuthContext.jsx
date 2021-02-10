@@ -17,6 +17,8 @@ const AuthContextProvider = ({ children }) => {
     function logout() {
         setUser(null);
         setPassword(null);
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
     }
 
     return <AuthContext.Provider value={{ user, password, loginUser, logout }}>{children}</AuthContext.Provider>;
