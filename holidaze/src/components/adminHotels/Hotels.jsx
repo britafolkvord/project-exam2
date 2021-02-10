@@ -61,6 +61,7 @@ function Hotels() {
                         {hotels.map((hotel) => {
                             return (
                                 <Hotel
+                                    key={hotel.id}
                                     name={hotel.name}
                                     image={hotel.image}
                                     maxGuests={hotel.maxGuests}

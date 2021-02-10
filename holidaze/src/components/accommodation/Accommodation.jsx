@@ -84,27 +84,28 @@ function Accommodation() {
                     />
                     {
                         <Container className={styles.container}>
+                            {status === Status.Error ? (
+                                <p className={styles.errorMessage}>
+                                    Something went wrong while fetching hotels.
+                                    <button onClick={() => history.go(0)} className={styles.reload}>
+                                        Try again!
+                                    </button>
+                                </p>
+                            ) : null}
+
+                            {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
+
+                            {status === Status.Success && isEmpty(hotels) ? (
+                                <p>There are currently no hotels listed.</p>
+                            ) : null}
+
+                            {isEmpty(filteredHotels) && !isEmpty(hotels) ? (
+                                <p className={styles.noMatch}>None of our hotels met your requirements :( </p>
+                            ) : null}
                             {filteredHotels.map((hotel) => {
                                 const { id, name, image, price, maxGuests, selfCatering } = hotel;
                                 return (
-                                    <>
-                                        {status === Status.Error ? (
-                                            <p className={styles.errorMessage}>
-                                                Something went wrong while fetching hotels.
-                                                <button onClick={() => history.go(0)} className={styles.reload}>
-                                                    Try again!
-                                                </button>
-                                            </p>
-                                        ) : null}
-
-                                        {status === Status.Loading ? (
-                                            <Spinner animation="border" className="spinner" />
-                                        ) : null}
-
-                                        {status === Status.Success && isEmpty(filteredHotels) ? (
-                                            <p>There are currently no hotels listed.</p>
-                                        ) : null}
-
+                                    <React.Fragment key={id}>
                                         {status === Status.Success && !isEmpty(filteredHotels) ? (
                                             <Hotel
                                                 key={id}
@@ -117,7 +118,7 @@ function Accommodation() {
                                                 buttonText={'More info'}
                                             />
                                         ) : null}
-                                    </>
+                                    </React.Fragment>
                                 );
                             })}
                         </Container>
