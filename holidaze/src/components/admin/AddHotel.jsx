@@ -12,24 +12,27 @@ import ErrorMessage from '../error/ErrorMessage';
 import styles from './add.module.scss';
 
 const schema = yup.object().shape({
-    name: yup.string().required('Name is required'),
+    name: yup.string().min(4, 'Name must be at least 2 characters').required('Name is required'),
     email: yup.string().email('Please enter a valid email').required('Email is required'),
-    description: yup
-        .string()
-        .min(20, 'Description must contain 20 characters or more')
-        .required('A message is required'),
     price: yup
         .number()
         .typeError('Price must be a number')
-        .min(10, 'Price must be 10$ or higher')
+        .min(10, 'Price must be 10$ per night or higher')
         .required('Price is required'),
     maxGuests: yup
         .number()
         .typeError('Maximum guests must be a number')
-        .min(2, 'Maximum nuber of guests must be 2 or higher')
-        .required('Maximum amount of guests is required'),
-    selfCatering: yup.boolean().typeError('Self-catering must be true or false').required('Input is required'),
-    image: yup.string().required('Image Url is required'),
+        .min(2, 'Max guest must be 2 or higher')
+        .required('Maximum guests is required'),
+    description: yup
+        .string()
+        .min(20, 'Description must contain 20 characters or more')
+        .required('Description is required'),
+    selfCatering: yup
+        .boolean()
+        .typeError('Self-catering must be either true or false')
+        .required('Self-catering is required'),
+    image: yup.string().required('Image url is required'),
 });
 
 function AddHotel() {

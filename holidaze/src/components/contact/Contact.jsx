@@ -61,12 +61,12 @@ export default function Contact() {
                         <Form.Group>
                             <Form.Label className={styles.label}>Name</Form.Label>
                             <Form.Control name="name" placeholder="Enter your name" ref={register} />
-                            {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
+                            {errors.name && <ErrorMessage errMsg={errors.name.message} />}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.label}>Email</Form.Label>
                             <Form.Control name="email" placeholder="Example@email.com" ref={register} />
-                            {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
+                            {errors.email && <ErrorMessage errMsg={errors.email.message} />}
                         </Form.Group>
 
                         <Form.Group>
@@ -78,7 +78,7 @@ export default function Contact() {
                                 rows={5}
                                 ref={register}
                             />
-                            {errors.message && <ErrorMessage errMsg={errors.message?.message} />}
+                            {errors.message && <ErrorMessage errMsg={errors.message.message} />}
                         </Form.Group>
                         <div className={styles.contactFormBtn}>
                             <Button type="submit" className={styles.submitBtn}>
