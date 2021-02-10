@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Heading from '../layout/Heading';
 import { BASE_URL, headers } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import SearchHotels from '../search/searchHotels';
 import { isEmpty } from '../../utils';
 
@@ -64,26 +65,24 @@ function Home() {
             <div className={styles.homeContent}>
                 <Heading title="Find hotels in Bergen" />
                 <SearchHotels handleSearch={filterHotels} />
+                {status === Status.Error ? (
+                    <p className={styles.errorMessage}>
+                        Something went wrong while fetching hotels.
+                        <button onClick={() => history.go(0)} className={styles.reload}>
+                            Try again!
+                        </button>
+                    </p>
+                ) : null}
+                {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {filteredHotels.map((hotel) => {
                     return (
-                        <>
-                            {status === Status.Error ? (
-                                <p className={styles.errorMessage}>
-                                    Something went wrong while fetching hotels.
-                                    <button onClick={() => history.go(0)} className={styles.reload}>
-                                        Try again!
-                                    </button>
-                                </p>
-                            ) : null}
-                            {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
-
-                            {status === Status.Success && isEmpty(filteredHotels) ? <p>No current enquiries.</p> : null}
+                        <React.Fragment key={hotel.id}>
                             {status === Status.Success && !isEmpty(filteredHotels) ? (
-                                <Link to={`/accommodation/${hotel.id}`} className={styles.link}>
+                                <Link to={`${Routes.accommodation.accommodation}/${hotel.id}`} className={styles.link}>
                                     <h2>{hotel.name}</h2>
                                 </Link>
                             ) : null}
-                        </>
+                        </React.Fragment>
                     );
                 })}
             </div>
