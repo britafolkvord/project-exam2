@@ -33,12 +33,20 @@
 }
 
 .showPassword {
+    background-color: transparent !important;
+    color: $grey12;
+    border: none;
+
     &:hover {
         text-decoration: underline;
+        border: none;
+        color: $grey12;
     }
 
-    &:focus {
-        padding: 2px;
+    &:active {
+        color: $grey12;
+        border: none;
+        background-color: transparent;
     }
 }
 

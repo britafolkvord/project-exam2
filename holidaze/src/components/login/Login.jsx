@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Container, Modal, Button, Form } from 'react-bootstrap';
 
 import Heading from '../layout/Heading';
+import { Routes } from '../../constants/Routes';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -36,7 +37,7 @@ function Login() {
         const userPassword = localStorage.getItem('password');
         if (user === data.username && userPassword === data.password) {
             loginUser(data.username, data.password);
-            history.push('/admin/dashboard');
+            history.push(Routes.admin.dashboard);
         } else {
             handleShow();
         }
@@ -50,7 +51,7 @@ function Login() {
                 </Modal.Header>
                 <Modal.Body>
                     Check to see if you've entered the right username and password. If you don't have an account you can
-                    go here to <Link to="/register">register</Link>.
+                    go here to <Link to={Routes.register}>register</Link>.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -62,7 +63,7 @@ function Login() {
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.login}>
                     <Heading title="Login" />
                     <p>
-                        Don't have an account? <Link to="../register">Register</Link>
+                        Don't have an account? <Link to={Routes.register}>Register</Link>
                     </p>
                     <div className={styles.form}>
                         <Form.Group className={styles.input}>
@@ -81,13 +82,9 @@ function Login() {
                             />
                             {errors.password && <ErrorMessage errMsg={errors.password?.message} />}
                             <div className={styles.passwordVisibility}>
-                                <Form.Label
-                                    onClick={togglePasswordVisiblity}
-                                    tabIndex={0}
-                                    className={styles.showPassword}
-                                >
+                                <Button onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>
                                     {passwordShown ? 'Hide password' : 'Show password'}
-                                </Form.Label>
+                                </Button>
                             </div>
                         </Form.Group>
 

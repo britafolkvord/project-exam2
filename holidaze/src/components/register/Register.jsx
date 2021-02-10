@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory, Link } from 'react-router-dom';
 import { Container, Button, Form } from 'react-bootstrap';
 
+import { Routes } from '../../constants/Routes';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -29,7 +30,7 @@ function Register() {
     const onSubmit = (data) => {
         localStorage.setItem('username', data.username);
         localStorage.setItem('password', data.password);
-        history.push('/login');
+        history.push(Routes.login);
     };
 
     return (
@@ -37,7 +38,7 @@ function Register() {
             <Form onSubmit={handleSubmit(onSubmit)} className={styles.register}>
                 <Heading title="Register" />
                 <p>
-                    Already have an account? <Link to="../login">Log in</Link>
+                    Already have an account? <Link to={Routes.login}>Log in</Link>
                 </p>
                 <div className={styles.form}>
                     <Form.Group className={styles.input}>
@@ -55,9 +56,9 @@ function Register() {
                         />
                         {errors.password && <ErrorMessage errMsg={errors.password?.message} />}
                         <div className={styles.passwordVisibility}>
-                            <Form.Label onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>
+                            <Button onClick={togglePasswordVisiblity} tabIndex={0} className={styles.showPassword}>
                                 {passwordShown ? 'Hide password' : 'Show password'}
-                            </Form.Label>
+                            </Button>
                         </div>
                     </Form.Group>
                     <div className={styles.btnContainer}>
