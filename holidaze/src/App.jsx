@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/routes/ProtectedRoute';
+import { Routes } from './constants/Routes';
 import Home from './components/home/Home';
 import Accommodation from './components/accommodation/Accommodation';
 import AccommodationDetails from './components/accommodation/AccommodationDetails';
@@ -16,44 +17,48 @@ import EditHotel from './components/admin/EditHotel';
 import Dashboard from './components/dashboard/Dashboard';
 import Enquiries from './components/adminEnquiries/Enquiries';
 import Messages from './components/adminMessages/Messages';
-import AdminFooter from './components/layout/admin/adminFooter';
-import PublicFooter from './components/layout/public/publicFooter';
+import Footer from './components/layout/Footer';
 import Navigation from './components/layout/Nav';
+import Unauthorized from './components/unauthorized/Unauthorized';
 
 function App() {
     return (
         <AuthContextProvider>
             <Router>
                 <Switch>
-                    <ProtectedRoute path="/admin">
+                    <ProtectedRoute path={Routes.admin.admin}>
                         <Navigation admin={true} />
                         <Container fluid className="adminContainer">
                             <Switch>
-                                <Route path="/admin/dashboard" exact component={Dashboard} />
-                                <Route path="/admin/adminEnquiries/enquiries" exact component={Enquiries} />
-                                <Route path="/admin/adminMessages/messages" exact component={Messages} />
-                                <Route path="/admin/adminHotels/hotels" exact component={Hotels} />
-                                <Route path="/admin/hotels/add" exact component={AddHotel} />
-                                <Route path="/admin/hotels/edit/:id" exact component={EditHotel} />
+                                <Route path={Routes.admin.dashboard} exact component={Dashboard} />
+                                <Route path={Routes.admin.enquiries} exact component={Enquiries} />
+                                <Route path={Routes.admin.messages} exact component={Messages} />
+                                <Route path={Routes.admin.hotels.hotels} exact component={Hotels} />
+                                <Route path={Routes.admin.hotels.add} exact component={AddHotel} />
+                                <Route path={`${Routes.admin.hotels.edit}/:id`} exact component={EditHotel} />
                             </Switch>
-                            <AdminFooter admin={true} />
+                            <Footer admin={true} />
                         </Container>
                     </ProtectedRoute>
 
-                    <Route path="/">
+                    <Route path={Routes.home}>
                         <Navigation />
                         <Container fluid>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/accommodation" exact component={Accommodation} />
-                            <Route path="/accommodation/:id" component={AccommodationDetails} />
-                            <Route path="/contact" component={Contact} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/register" component={Register} />
+                            <Route path={Routes.home} exact component={Home} />
+                            <Route path={Routes.accommodation.accommodation} exact component={Accommodation} />
+                            <Route
+                                path={`${Routes.accommodation.accommodation}/:id`}
+                                component={AccommodationDetails}
+                            />
+                            <Route path={Routes.contact} component={Contact} />
+                            <Route path={Routes.login} component={Login} />
+                            <Route path={Routes.register} component={Register} />
+                            <Route path={Routes.unauthorized} component={Unauthorized} />
                         </Container>
-                        <PublicFooter />
+                        <Footer />
                     </Route>
 
-                    <Redirect to="/" />
+                    <Redirect to={Routes.home} />
                 </Switch>
             </Router>
         </AuthContextProvider>
