@@ -1,0 +1,36 @@
+@import '../../sass/partials/variables';
+
+.container {
+    width: 100%;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: 1.5rem;
+        color: $grey12;
+    }
+
+    .icon {
+        width: 400px;
+        height: 400px;
+        margin: 48px 0;
+        fill: $grey12;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        p {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .icon {
+            height: 200px;
+            width: 200px;
+        }
+    }
+}
