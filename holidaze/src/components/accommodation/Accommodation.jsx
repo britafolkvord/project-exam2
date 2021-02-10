@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { EmojiFrown } from 'react-bootstrap-icons';
 
 import { BASE_URL, headers } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import FilterHotels from '../filterHotels/FilterHotels';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
@@ -121,7 +122,7 @@ function Accommodation() {
                                                 price={price}
                                                 maxGuests={maxGuests}
                                                 selfCatering={selfCatering ? 'Yes' : 'No'}
-                                                path={'../accommodation/' + id}
+                                                path={`${Routes.accommodation.accommodation}/${id}`}
                                                 buttonText={'More info'}
                                             />
                                         ) : null}

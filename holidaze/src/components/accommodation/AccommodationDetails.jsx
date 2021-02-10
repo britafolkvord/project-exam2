@@ -4,6 +4,7 @@ import { Button, Container, Image, Spinner } from 'react-bootstrap';
 import { EggFried, CashStack, People } from 'react-bootstrap-icons';
 
 import { BASE_URL, headers } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import Heading from '../layout/Heading';
 import Enquire from './Enquire';
 
@@ -92,7 +93,10 @@ function AccommodationDetails() {
                                     <p>Self-catering: {hotel.selfCatering ? 'Yes' : 'No'}</p>
                                 </div>
                             </div>
-                            <Link to={`/accommodation/${id}/enquire`} className={styles.buttonContainer}>
+                            <Link
+                                to={`${Routes.accommodation.accommodation}/${id}${Routes.accommodation.enquire}`}
+                                className={styles.buttonContainer}
+                            >
                                 <Button className={styles.button}>Enquire</Button>
                             </Link>
                         </Container>
@@ -121,7 +125,7 @@ function AccommodationDetails() {
                         </Container>
                     </>
                 ) : null}
-                <Route path="/accommodation/:id/enquire">
+                <Route path={`${Routes.accommodation.accommodation}/:id${Routes.accommodation.enquire}`}>
                     <Enquire />
                 </Route>
             </Container>
