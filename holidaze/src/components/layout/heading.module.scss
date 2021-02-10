@@ -5,3 +5,9 @@
     font-size: 3rem;
     color: $grey12;
 }
+
+@media (max-width: 992px) {
+    .heading {
+        text-align: center;
+    }
+}
