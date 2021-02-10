@@ -3,6 +3,7 @@ import { Container, Spinner } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 import { BASE_URL, headers } from '../../constants/api';
+import { Routes } from '../../constants/Routes';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
 import { isEmpty } from '../../utils';
@@ -67,7 +68,7 @@ function Hotels() {
                                     maxGuests={hotel.maxGuests}
                                     price={hotel.price}
                                     selfCatering={hotel.selfCatering ? 'Yes' : 'No'}
-                                    path={`/admin/hotels/edit/${hotel.id}`}
+                                    path={`${Routes.admin.hotels.edit}/${hotel.id}`}
                                     buttonText={'Edit hotel'}
                                 />
                             );
