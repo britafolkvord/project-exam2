@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+import { Routes } from '../../constants/Routes';
 import Heading from '../layout/Heading';
 import Messages from '../adminMessages/Messages';
 import Enquiries from '../adminEnquiries/Enquiries';
@@ -14,12 +15,12 @@ function Dashboard() {
             <Container className={styles.dashboard}>
                 <Heading title="Dashboard" />
                 <Container className={styles.links}>
-                    <NavLink to="../admin/adminHotels/hotels">
+                    <Link to={Routes.admin.hotels.hotels}>
                         <Button className={styles.btn}>Hotels</Button>
-                    </NavLink>
-                    <NavLink to="../admin/hotels/add">
+                    </Link>
+                    <Link to={Routes.admin.hotels.add}>
                         <Button className={styles.btn}>Add hotel</Button>
-                    </NavLink>
+                    </Link>
                 </Container>
                 <Messages />
                 <Enquiries />
