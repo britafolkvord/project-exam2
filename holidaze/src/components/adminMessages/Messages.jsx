@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
@@ -18,11 +17,15 @@ const Status = {
 function Messages() {
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     useEffect(() => {
+        getMessages();
+    }, []);
+    const getMessages = () => {
         const url = BASE_URL + 'contacts';
         const options = { headers };
+
+        setStatus(Status.Loading);
 
         fetch(url, options)
             .then((response) => response.json())
@@ -39,7 +42,7 @@ function Messages() {
                 console.log(error);
                 setStatus(Status.Error);
             });
-    }, []);
+    };
 
     return (
         <Container className={styles.messages}>
@@ -47,7 +50,7 @@ function Messages() {
             {status === Status.Error ? (
                 <p className={styles.errorMessage}>
                     Something went wrong while fetching messages.
-                    <button onClick={() => history.go(0)} className={styles.reload}>
+                    <button onClick={() => getMessages()} className={styles.reload}>
                         Try again!
                     </button>
                 </p>

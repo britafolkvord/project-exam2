@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
@@ -18,11 +17,16 @@ const Status = {
 function Enquiries() {
     const [enquiries, setEnquiries] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     useEffect(() => {
+        getEnquiries();
+    }, []);
+
+    const getEnquiries = () => {
         const url = BASE_URL + 'enquiries';
         const options = { headers };
+
+        setStatus(Status.Loading);
 
         fetch(url, options)
             .then((response) => response.json())
@@ -39,7 +43,7 @@ function Enquiries() {
                 console.log(error);
                 setStatus(Status.Error);
             });
-    }, []);
+    };
 
     return (
         <Container className={styles.container}>
@@ -47,8 +51,8 @@ function Enquiries() {
             <Container className={styles.enquiriesContainer}>
                 {status === Status.Error ? (
                     <p className={styles.errorMessage}>
-                        Something went wrong while fetching enquiries.{' '}
-                        <button onClick={() => history.go(0)} className={styles.reload}>
+                        Something went wrong while fetching enquiries.
+                        <button onClick={() => getEnquiries()} className={styles.reload}>
                             Try again!
                         </button>
                     </p>
