@@ -1,17 +1,13 @@
 import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { Routes } from '../../constants/Routes';
 
 import { AuthContext } from '../../context/AuthContext';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
-    return (
-        <Route
-            {...rest}
-            render={(props) => (user ? <Component {...rest} {...props} /> : <Redirect to="/register" />)}
-        />
-    );
+    return user ? children : <Redirect to={Routes.login.register} />;
 };
 
 export default ProtectedRoute;
