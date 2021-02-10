@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { EmojiFrown } from 'react-bootstrap-icons';
 
 import { BASE_URL, headers } from '../../constants/api';
 import FilterHotels from '../filterHotels/FilterHotels';
@@ -79,7 +80,11 @@ function Accommodation() {
                 <div className={styles.content}>
                     <FilterHotels
                         handleSearch={filterHotels}
-                        {...{ maxGuests, setMaxGuests, setSelfCatering, maxPrice, setMaxPrice }}
+                        maxGuests={maxGuests}
+                        maxPrice={maxPrice}
+                        selfCatering={selfCatering}
+                        setMaxGuests={setMaxGuests}
+                        setMaxPrice={setMaxPrice}
                         setSelfCatering={setSelfCatering}
                     />
                     {
@@ -100,7 +105,9 @@ function Accommodation() {
                             ) : null}
 
                             {isEmpty(filteredHotels) && !isEmpty(hotels) ? (
-                                <p className={styles.noMatch}>None of our hotels met your requirements :( </p>
+                                <p className={styles.noMatch}>
+                                    None of our hotels met your requirements <EmojiFrown />
+                                </p>
                             ) : null}
                             {filteredHotels.map((hotel) => {
                                 const { id, name, image, price, maxGuests, selfCatering } = hotel;

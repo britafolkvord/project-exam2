@@ -1,17 +1,27 @@
 import React from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 
 import SubHeading from '../layout/SubHeading';
 
 import styles from './filter.module.scss';
 
-export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, maxGuests, setMaxGuests }) {
+export default function FilterHotels({
+    setSelfCatering,
+    maxPrice,
+    setMaxPrice,
+    maxGuests,
+    setMaxGuests,
+    selfCatering,
+}) {
     return (
         <Container className={styles.filter}>
             <SubHeading title="Filter by" />
             <Form className={styles.form}>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label}>Number of guests</Form.Label>
+                    <output htmlFor="guests" className={styles.output}>
+                        ( {maxGuests} )
+                    </output>
                     <div className={styles.slider}>
                         <Form.Control
                             id="guests"
@@ -27,13 +37,13 @@ export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, m
                                 Number(event.target.value) >= 0 ? setMaxGuests(event.target.value) : undefined
                             }
                         />
-                        <output for="guests" className={styles.output}>
-                            {maxGuests}
-                        </output>
                     </div>
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Max $ per night</Form.Label>
+                    <Form.Label className={styles.label}>Max price per night</Form.Label>
+                    <output htmlFor="price" className={styles.output}>
+                        ( {maxPrice}$ )
+                    </output>
                     <div className={styles.slider}>
                         <Form.Control
                             id="price"
@@ -48,15 +58,13 @@ export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, m
                                 Number(event.target.value) >= 0 ? setMaxPrice(event.target.value) : undefined
                             }
                         />
-                        <output for="price" className={styles.output}>
-                            {maxPrice}$
-                        </output>
                     </div>
                 </Form.Group>
                 <Form.Group className={styles.catering}>
                     <Form.Label className={styles.label}>Self-catering</Form.Label>
                     <div className={styles.radio}>
                         <Form.Check
+                            checked={selfCatering === true}
                             inline
                             label="Yes"
                             aria-label="Self-catering: yes"
@@ -65,6 +73,7 @@ export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, m
                             onChange={() => setSelfCatering(true)}
                         />
                         <Form.Check
+                            checked={selfCatering === false}
                             inline
                             label="No"
                             aria-label="Self-catering: no"
@@ -74,6 +83,16 @@ export default function FilterHotels({ setSelfCatering, maxPrice, setMaxPrice, m
                         />
                     </div>
                 </Form.Group>
+                <Button
+                    onClick={() => {
+                        setSelfCatering(null);
+                        setMaxPrice('');
+                        setMaxGuests('');
+                    }}
+                    className={styles.reset}
+                >
+                    Reset filters
+                </Button>
             </Form>
         </Container>
     );
