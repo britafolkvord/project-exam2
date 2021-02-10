@@ -18,8 +18,7 @@ import Enquiries from './components/adminEnquiries/Enquiries';
 import Messages from './components/adminMessages/Messages';
 import AdminFooter from './components/layout/admin/adminFooter';
 import PublicFooter from './components/layout/public/publicFooter';
-import PublicNav from './components/layout/public/publicNav';
-import AdminNav from './components/layout/admin/adminNav';
+import Navigation from './components/layout/Nav';
 
 function App() {
     return (
@@ -27,7 +26,7 @@ function App() {
             <Router>
                 <Switch>
                     <ProtectedRoute path="/admin">
-                        <AdminNav />
+                        <Navigation admin={true} />
                         <Container fluid className="adminContainer">
                             <Switch>
                                 <Route path="/admin/dashboard" exact component={Dashboard} />
@@ -37,12 +36,12 @@ function App() {
                                 <Route path="/admin/hotels/add" exact component={AddHotel} />
                                 <Route path="/admin/hotels/edit/:id" exact component={EditHotel} />
                             </Switch>
-                            <AdminFooter />
+                            <AdminFooter admin={true} />
                         </Container>
                     </ProtectedRoute>
 
                     <Route path="/">
-                        <PublicNav />
+                        <Navigation />
                         <Container fluid>
                             <Route path="/" exact component={Home} />
                             <Route path="/accommodation" exact component={Accommodation} />

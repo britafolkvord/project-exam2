@@ -1,0 +1,29 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
+
+import styles from './footer.module.scss';
+
+function Footer({ admin }) {
+    return (
+        <footer className={`${admin ? styles.admin : ''} ${styles.footer}`}>
+            <div className={styles.col1}>
+                <p>
+                    <Link to="../../../contact/contact" className={styles.footerLink}>
+                        Contact
+                    </Link>
+                </p>
+            </div>
+            <div className={styles.col2}>
+                <p>Holidaze © 2021</p>
+            </div>
+            <div className={styles.col3}>
+                <Facebook className={styles.icon} tabIndex={0} />
+                <Twitter className={styles.icon} tabIndex={0} />
+                <Instagram className={styles.icon} tabIndex={0} />
+            </div>
+        </footer>
+    );
+}
+
+export default Footer;
