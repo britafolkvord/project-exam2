@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { InputGroup, FormControl } from 'react-bootstrap';
 
 import styles from './search.module.scss';
@@ -15,7 +14,3 @@ export default function SearchHotels({ handleSearch }) {
         </InputGroup>
     );
 }
-
-SearchHotels.propTypes = {
-    handleSearch: PropTypes.func.isRequired,
-};
