@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 
 import { AuthContext } from '../../context/AuthContext';
 import { Routes } from '../../constants/Routes';
