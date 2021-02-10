@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
-import { NavDropdown } from 'react-bootstrap';
+import { Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { PersonCircle } from 'react-bootstrap-icons';
 
 import { AuthContext } from '../../context/AuthContext';

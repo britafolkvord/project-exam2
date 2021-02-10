@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
+import { Routes } from '../../constants/Routes';
+
 import styles from './footer.module.scss';
 
 function Footer({ admin }) {
@@ -9,7 +11,7 @@ function Footer({ admin }) {
         <footer className={`${admin ? styles.admin : ''} ${styles.footer}`}>
             <div className={styles.col1}>
                 <p>
-                    <Link to="../../../contact/contact" className={styles.footerLink}>
+                    <Link to={Routes.contact} className={styles.footerLink}>
                         Contact
                     </Link>
                 </p>
