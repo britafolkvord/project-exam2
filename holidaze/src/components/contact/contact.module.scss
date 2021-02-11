@@ -1,4 +1,5 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .contact {
     background-position: center;
@@ -38,24 +39,8 @@
 }
 
 .submitBtn {
-    background-color: $blue;
-    border-color: $blue;
-    font-family: $text-font;
-    font-size: 1.1rem;
-    transition: transform 0.5s;
     margin-top: 16px;
-    box-shadow: $box-shadow-btn;
-
-    &:hover {
-        transform: scale(1.05);
-        background-color: $blue;
-        border-color: $blue;
-    }
-
-    &:active {
-        background-color: $blue;
-        border-color: $blue;
-    }
+    @include blue-btn;
 }
 
 @media (max-width: 765px) {

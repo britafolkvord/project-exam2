@@ -27,23 +27,7 @@
 
 .btn {
     margin-left: 16px;
-    background-color: $blue;
-    border-color: $blue;
-    font-family: $text-font;
-    font-size: 1.1rem;
-    transition: transform 0.5s;
-    box-shadow: $box-shadow-btn;
-
-    &:hover {
-        background-color: $blue;
-        border-color: $blue;
-        transform: scale(1.1);
-    }
-
-    &:active {
-        background-color: $blue !important;
-        border-color: $blue !important;
-    }
+    @include blue-btn;
 }
 
 @media (max-width: 992px) {

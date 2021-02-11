@@ -90,21 +90,8 @@
         .button {
             width: 30%;
             padding: 8px 24px;
+            @include blue-btn;
             font-size: 1.4rem;
-            background-color: $blue;
-            border-color: $blue;
-            color: $white;
-            font-family: $text-font;
-            box-shadow: $box-shadow-btn;
-            transition: transform 0.5s;
-
-            &:hover {
-                transform: scale(1.02);
-            }
-
-            &:active {
-                background-color: $blue;
-            }
         }
     }
 }

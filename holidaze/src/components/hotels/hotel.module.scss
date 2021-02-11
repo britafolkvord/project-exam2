@@ -1,4 +1,5 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .card {
     width: 40%;
@@ -21,23 +22,7 @@
 
 .btn {
     margin-top: 16px;
-    background-color: $blue;
-    font-family: $text-font;
-    font-size: 1.1rem;
-    border: none;
-    transition: transform 0.5s;
-    box-shadow: $box-shadow-btn;
-
-    &:hover {
-        background-color: $blue;
-        border: none;
-        transform: scale(1.05);
-        text-decoration: none;
-    }
-
-    &:active {
-        background-color: $blue !important;
-    }
+    @include blue-btn;
 }
 
 .link:hover {

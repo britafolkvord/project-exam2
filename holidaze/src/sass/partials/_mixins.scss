@@ -26,3 +26,23 @@
         background-color: #a81f2c;
     }
 }
+
+@mixin blue-btn {
+    background-color: $blue;
+    font-family: $text-font;
+    font-size: 1.1rem;
+    border: none;
+    transition: transform 0.5s;
+    box-shadow: $box-shadow-btn;
+
+    &:hover {
+        background-color: $blue;
+        border: none;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: $blue !important;
+    }
+}

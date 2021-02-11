@@ -8,7 +8,7 @@ export function FetchError({ message, home }) {
     return (
         <p className={`${home ? styles.home : ''} ${styles.errorMessage}`}>
             {message}
-            <button onClick={() => history.go(0)} className={styles.reload}>
+            <button onClick={() => history.go(0)} className={`${home ? styles.btn : ''} ${styles.reload}`}>
                 Try again!
             </button>
         </p>
