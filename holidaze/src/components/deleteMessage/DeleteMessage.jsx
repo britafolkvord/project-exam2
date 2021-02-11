@@ -13,7 +13,8 @@ function DeleteMessage(props) {
 
     const checkDelete = () => {
         confirmAlert({
-            title: 'Confirm deletion',
+            title: 'Are you sure?',
+            message: 'Deleting this message will be permanent',
             buttons: [
                 {
                     label: 'Yes',

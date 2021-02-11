@@ -13,7 +13,8 @@ function DeleteEnquiry(props) {
 
     const checkDelete = () => {
         confirmAlert({
-            title: 'Confirm deletion',
+            title: 'Are you sure?',
+            message: 'Deleting this enquiry will be premanent',
             buttons: [
                 {
                     label: 'Yes',
