@@ -52,6 +52,22 @@ span {
     justify-content: flex-end;
 }
 
+.reply {
+    margin-left: 8px;
+    @include blue-btn;
+    transition: none;
+
+    &:hover {
+        transform: none;
+        background-color: #37647a;
+    }
+
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
 .errorMessage {
     padding: 16px;
     line-height: 2.5;

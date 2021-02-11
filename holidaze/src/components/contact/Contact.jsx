@@ -56,7 +56,11 @@ export default function Contact() {
             </Modal>
             <Container className={styles.contact} fluid>
                 <div className={styles.column}>
-                    <Heading title="Contact" />
+                    <Heading title="Have any questions?" />
+                    <p className={styles.contactInfo}>
+                        We would love for you to get in touch with us! Please fill out the form below and we will be
+                        sure to get back to you with a reply shortly.
+                    </p>
                     <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                         <Form.Group>
                             <Form.Label className={styles.label} htmlFor="name">

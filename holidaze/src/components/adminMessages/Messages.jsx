@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container, Spinner, Button } from 'react-bootstrap';
 
 import { isEmpty, prettyDate } from '../../utils';
 import { BASE_URL, headers } from '../../constants/api';
@@ -75,6 +75,9 @@ function Messages() {
                                 <p className={styles.messageContent}>{message.message}</p>
                                 <div className={styles.deleteBtn}>
                                     <DeleteMessage id={message.id} />
+                                    <Button className={styles.reply}>
+                                        <a href={`mailto:${message.email}`}>Reply</a>
+                                    </Button>
                                 </div>
                             </div>
                         );
