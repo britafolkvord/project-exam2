@@ -51,6 +51,7 @@
 .reset {
     margin-left: 24px;
     background-color: #6d6d6d;
+    box-shadow: $box-shadow-btn;
     border: none;
 
     &:hover {

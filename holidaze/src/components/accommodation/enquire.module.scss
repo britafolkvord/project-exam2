@@ -36,7 +36,7 @@
     border: none;
     padding: 8px 16px;
     transition: transform 0.5s;
-    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
+    box-shadow: $box-shadow-btn;
 
     &:hover {
         background-color: $clay;

@@ -10,7 +10,7 @@
 }
 
 .admin {
-    background-color: #ffffff;
+    background-color: $white;
 }
 
 .col1,
@@ -21,10 +21,10 @@
 }
 
 .footerLink {
-    color: #000000;
+    color: $black;
 
     &:hover {
-        color: #000000;
+        color: $black;
     }
 }
 

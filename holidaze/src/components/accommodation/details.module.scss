@@ -97,9 +97,9 @@
             font-size: 1.4rem;
             background-color: $blue;
             border-color: $blue;
-            color: #ffffff;
+            color: $white;
             font-family: $text-font;
-            box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
+            box-shadow: $box-shadow-btn;
             transition: transform 0.5s;
 
             &:hover {
@@ -126,8 +126,8 @@
         background-color: $blue;
         border: $blue;
         margin-left: 8px;
-        color: #ffffff;
-        box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
+        color: $white;
+        box-shadow: $box-shadow-btn;
         border-radius: 6px;
         transition: transform 0.5s;
 

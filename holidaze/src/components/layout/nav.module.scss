@@ -5,9 +5,9 @@
 }
 
 .admin {
-    background-color: #ffffff;
+    background-color: $white;
     .navbarBrand {
-        color: #000000;
+        color: $black;
     }
 }
 
@@ -77,7 +77,7 @@
 }
 
 .active {
-    color: #000000;
+    color: $black;
     text-decoration: underline;
 }
 

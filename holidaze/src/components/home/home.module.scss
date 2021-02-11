@@ -13,7 +13,7 @@
 
     h1 {
         text-align: center;
-        color: #ffffff;
+        color: $white;
         font-size: 3rem;
         font-family: $heading-font;
         text-shadow: 0 1px #171818, -1px 0 #424242, -1px 2px #242627, -2px 1px #363a3d, -2px 3px #1b2022;
@@ -36,7 +36,7 @@
 }
 
 .link {
-    background-color: #ffffff;
+    background-color: $white;
     margin: 0 auto;
     color: $grey12;
     width: 100%;
@@ -61,7 +61,7 @@
 .errorMessage {
     padding: 16px;
     line-height: 2.5;
-    color: #ffffff;
+    color: $white;
     text-shadow: 0 1px #171818, -1px 0 #424242, -1px 2px #242627, -2px 1px #363a3d, -2px 3px #1b2022;
     text-align: center;
 }
@@ -75,7 +75,7 @@
     background-color: $blue;
     border: $blue;
     margin-left: 8px;
-    color: #ffffff;
+    color: $white;
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
     border-radius: 6px;
 
