@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 import { BASE_URL, headers } from '../../constants/api';
 import { Routes } from '../../constants/Routes';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
 import { isEmpty } from '../../utils';
+import { FetchError } from '../error/FetchError';
 
 import styles from './hotels.module.scss';
 
@@ -19,7 +19,6 @@ const Status = {
 function Hotels() {
     const [hotels, setHotels] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -46,14 +45,7 @@ function Hotels() {
         <>
             <Container className={styles.container}>
                 <Heading title="Hotels" />
-                {status === Status.Error ? (
-                    <p>
-                        Something went wrong while fetching the hotel.
-                        <button onClick={() => history.go(0)} className={styles.reload}>
-                            Try again!
-                        </button>
-                    </p>
-                ) : null}
+                {status === Status.Error ? <FetchError message="Something went wrong while fetching hotels" /> : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {status === Status.Success && isEmpty(hotels) ? <p>There are currently no hotels listed.</p> : null}
 

@@ -10,6 +10,7 @@ import { Routes } from '../../constants/Routes';
 import DeleteHotel from './DeleteHotel';
 import Heading from '../layout/Heading';
 import ErrorMessage from '../error/ErrorMessage';
+import { FetchError } from '../error/FetchError';
 
 import styles from './edit.module.scss';
 
@@ -96,12 +97,7 @@ function AddHotel() {
             <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <Heading title="Edit Hotel" />
                 {status === Status.Error ? (
-                    <p className={styles.errorMessage}>
-                        Something went wrong while fetching the hotel.
-                        <button onClick={() => history.go(0)} className={styles.reload}>
-                            Try again!
-                        </button>
-                    </p>
+                    <FetchError message="Something went wrong while fetching the hotel" />
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {status === Status.Success ? (

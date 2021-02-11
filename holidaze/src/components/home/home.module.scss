@@ -57,32 +57,6 @@
     }
 }
 
-.errorMessage {
-    padding: 16px;
-    line-height: 2.5;
-    color: $white;
-    text-shadow: 0 1px #171818, -1px 0 #424242, -1px 2px #242627, -2px 1px #363a3d, -2px 3px #1b2022;
-    text-align: center;
-}
-
-.reload {
-    padding: 0.375rem 0.75rem;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    font-family: $text-font;
-    background-color: $blue;
-    border: $blue;
-    margin-left: 8px;
-    color: $white;
-    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.2);
-    border-radius: 6px;
-
-    &:hover {
-        background-color: #375f74;
-    }
-}
-
 @media (max-width: 992px) {
     .link {
         width: 90%;

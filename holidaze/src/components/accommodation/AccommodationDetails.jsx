@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route, useParams, useHistory } from 'react-router-dom';
+import { Link, Route, useParams } from 'react-router-dom';
 import { Button, Container, Image, Spinner } from 'react-bootstrap';
 import { EggFried, CashStack, People } from 'react-bootstrap-icons';
 
@@ -7,6 +7,7 @@ import { BASE_URL, headers } from '../../constants/api';
 import { Routes } from '../../constants/Routes';
 import Heading from '../layout/Heading';
 import Enquire from './Enquire';
+import { FetchError } from '../error/FetchError';
 
 import styles from './details.module.scss';
 
@@ -19,7 +20,6 @@ const Status = {
 function AccommodationDetails() {
     const [hotel, setHotel] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     let { id } = useParams();
 
@@ -48,12 +48,7 @@ function AccommodationDetails() {
         <>
             <Container className={styles.container}>
                 {status === Status.Error ? (
-                    <p className={styles.errorMessage}>
-                        Something went wrong while fetching the hotel.
-                        <button onClick={() => history.go(0)} className={styles.reload}>
-                            Try again!
-                        </button>
-                    </p>
+                    <FetchError message="Something went wrong while fetching the hotel" />
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {status === Status.Success ? (

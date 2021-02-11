@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Heading from '../layout/Heading';
 import { BASE_URL, headers } from '../../constants/api';
 import { Routes } from '../../constants/Routes';
 import SearchHotels from '../search/searchHotels';
 import { isEmpty } from '../../utils';
+import { FetchError } from '../error/FetchError';
 
 import styles from './home.module.scss';
 
@@ -20,7 +21,6 @@ function Home() {
     const [hotels, setHotels] = useState([]);
     const [filteredHotels, setFilteredHotels] = useState([]);
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -66,12 +66,7 @@ function Home() {
                 <Heading title="Find hotels in Bergen" />
                 <SearchHotels handleSearch={filterHotels} />
                 {status === Status.Error ? (
-                    <p className={styles.errorMessage}>
-                        Something went wrong while fetching hotels.
-                        <button onClick={() => history.go(0)} className={styles.reload}>
-                            Try again!
-                        </button>
-                    </p>
+                    <FetchError message="Something went wrong while fetching hotels" home={true} />
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
                 {filteredHotels.map((hotel) => {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 import { EmojiFrown } from 'react-bootstrap-icons';
 
 import { BASE_URL, headers } from '../../constants/api';
@@ -9,6 +8,7 @@ import FilterHotels from '../filterHotels/FilterHotels';
 import Hotel from '../hotels/hotel';
 import Heading from '../layout/Heading';
 import { isEmpty } from '../../utils';
+import { FetchError } from '../error/FetchError';
 
 import styles from './accommodation.module.scss';
 
@@ -25,7 +25,6 @@ function Accommodation() {
     const [maxPrice, setMaxPrice] = useState('');
     const [maxGuests, setMaxGuests] = useState('');
     const [status, setStatus] = useState(Status.Loading);
-    const history = useHistory();
 
     useEffect(() => {
         const url = BASE_URL + 'establishments';
@@ -91,12 +90,7 @@ function Accommodation() {
                     {
                         <Container className={styles.container}>
                             {status === Status.Error ? (
-                                <p className={styles.errorMessage}>
-                                    Something went wrong while fetching hotels.
-                                    <button onClick={() => history.go(0)} className={styles.reload}>
-                                        Try again!
-                                    </button>
-                                </p>
+                                <FetchError message="Something went wrong while fetching hotels" />
                             ) : null}
 
                             {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
