@@ -37,7 +37,7 @@ const schema = yup.object().shape({
 });
 
 function AddHotel() {
-    const { register, errors, handleSubmit } = useForm({
+    const { register, errors, reset, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
 
@@ -53,7 +53,7 @@ function AddHotel() {
     return (
         <Container className={styles.container}>
             <Heading title="Add Hotel" />
-            <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <Form onSubmit={handleSubmit(onSubmit)} onReset={reset} className={styles.form}>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label} htmlFor="name">
                         Name
@@ -110,6 +110,9 @@ function AddHotel() {
                     {errors.image && <ErrorMessage errMsg={errors.image?.message} />}
                 </Form.Group>
                 <div className={styles.btnContainer}>
+                    <Button type="reset" className={styles.reset}>
+                        Reset
+                    </Button>
                     <Button type="submit" className={styles.btn}>
                         Submit
                     </Button>
