@@ -31,7 +31,6 @@ export default function FilterHotels({
                             aria-label="Number of guests"
                             aria-valuemin="0"
                             aria-valuemax="25"
-                            aria-valuenow={maxGuests}
                             value={maxGuests}
                             onChange={(event) =>
                                 Number(event.target.value) >= 0 ? setMaxGuests(event.target.value) : undefined
