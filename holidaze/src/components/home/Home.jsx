@@ -47,7 +47,7 @@ function Home() {
         const searchValue = e.target.value.toLowerCase();
         const filteredArray = hotels.filter((hotel) => {
             const lowerCaseName = hotel.name.toLowerCase();
-            if (lowerCaseName.startsWith(searchValue)) {
+            if (lowerCaseName.includes(searchValue)) {
                 return true;
             }
             return false;
@@ -69,17 +69,22 @@ function Home() {
                     <FetchError message="Something went wrong while fetching hotels" home={true} />
                 ) : null}
                 {status === Status.Loading ? <Spinner animation="border" className="spinner" /> : null}
-                {filteredHotels.map((hotel) => {
-                    return (
-                        <React.Fragment key={hotel.id}>
-                            {status === Status.Success && !isEmpty(filteredHotels) ? (
-                                <Link to={`${Routes.accommodation.accommodation}/${hotel.id}`} className={styles.link}>
-                                    <h2>{hotel.name}</h2>
-                                </Link>
-                            ) : null}
-                        </React.Fragment>
-                    );
-                })}
+                <div className={styles.resultContainer}>
+                    {filteredHotels.map((hotel) => {
+                        return (
+                            <React.Fragment key={hotel.id}>
+                                {status === Status.Success && !isEmpty(filteredHotels) ? (
+                                    <Link
+                                        to={`${Routes.accommodation.accommodation}/${hotel.id}`}
+                                        className={styles.link}
+                                    >
+                                        <h2>{hotel.name}</h2>
+                                    </Link>
+                                ) : null}
+                            </React.Fragment>
+                        );
+                    })}
+                </div>
             </div>
         </header>
     );
