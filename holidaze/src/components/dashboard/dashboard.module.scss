@@ -22,25 +22,9 @@
 }
 
 .btn {
-    font-size: 1.1rem;
     padding: 8px 24px;
     width: 100%;
-    background-color: $clay;
-    border-color: $clay;
-    font-family: $text-font;
-    box-shadow: $box-shadow-btn;
-    transition: transform 0.5s;
-
-    &:hover {
-        background-color: $clay;
-        border-color: $clay;
-        transform: scale(1.1);
-    }
-
-    &:active {
-        background-color: $clay !important;
-        border-color: $clay !important;
-    }
+    @include clay-btn;
 }
 
 @media (max-width: 992px) {

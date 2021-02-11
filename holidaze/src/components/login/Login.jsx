@@ -13,7 +13,7 @@ import ErrorMessage from '../error/ErrorMessage';
 import styles from './login.module.scss';
 
 const schema = yup.object().shape({
-    username: yup.string().min(4, 'Name must be at least 4 characters').required('Username is required'),
+    username: yup.string().min(4, 'Username must be at least 4 characters').required('Username is required'),
     password: yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
 });
 

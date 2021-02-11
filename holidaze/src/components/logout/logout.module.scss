@@ -1,20 +1,9 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .logoutBtn {
-    background-color: $clay;
-    border: none;
-    transition: transform 0.5s;
-    font-family: $text-font;
-    font-size: 1.1rem;
-
-    &:hover {
-        background-color: $clay;
-        transform: scale(1.05);
-    }
-
-    &:active {
-        background-color: $clay !important;
-    }
+    @include clay-btn;
+    box-shadow: none;
 }
 
 @media (max-width: 992px) {

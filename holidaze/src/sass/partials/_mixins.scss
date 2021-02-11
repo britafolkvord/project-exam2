@@ -46,3 +46,23 @@
         background-color: $blue !important;
     }
 }
+
+@mixin clay-btn {
+    background-color: $clay;
+    font-family: $text-font;
+    font-size: 1.1rem;
+    border: none;
+    transition: transform 0.5s;
+    box-shadow: $box-shadow-btn;
+
+    &:hover {
+        background-color: $clay;
+        border: none;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: $clay !important;
+    }
+}
