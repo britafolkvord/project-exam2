@@ -58,35 +58,50 @@ function AddHotel() {
                     <Form.Label className={styles.label} htmlFor="name">
                         Name
                     </Form.Label>
-                    <Form.Control name="name" placeholder="Enter a name for the hotel" ref={register} />
+                    <Form.Control
+                        name="name"
+                        aria-label="name"
+                        placeholder="Enter a name for the hotel"
+                        ref={register}
+                    />
                     {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label} htmlFor="email">
                         Email
                     </Form.Label>
-                    <Form.Control name="email" placeholder="Enter an email address" ref={register} />
+                    <Form.Control name="email" aria-label="email" placeholder="Enter an email address" ref={register} />
                     {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label} htmlFor="price">
                         Price
                     </Form.Label>
-                    <Form.Control name="price" placeholder="Enter price per night" ref={register} />
+                    <Form.Control name="price" aria-label="price" placeholder="Enter price per night" ref={register} />
                     {errors.price && <ErrorMessage errMsg={errors.price?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label} htmlFor="maxGuests">
                         Max guests
                     </Form.Label>
-                    <Form.Control name="maxGuests" placeholder="Enter maximum number of guests" ref={register} />
+                    <Form.Control
+                        name="maxGuests"
+                        aria-label="maxGuests"
+                        placeholder="Enter maximum number of guests"
+                        ref={register}
+                    />
                     {errors.maxGuests && <ErrorMessage errMsg={errors.maxGuests?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
                     <Form.Label className={styles.label} htmlFor="selfCatering">
                         Self-catering
                     </Form.Label>
-                    <Form.Control name="selfCatering" placeholder="Enter true or false" ref={register} />
+                    <Form.Control
+                        name="selfCatering"
+                        aria-label="selfCatering"
+                        placeholder="Enter true or false"
+                        ref={register}
+                    />
                     {errors.selfCatering && <ErrorMessage errMsg={errors.selfCatering?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
@@ -95,6 +110,7 @@ function AddHotel() {
                     </Form.Label>
                     <Form.Control
                         name="description"
+                        aria-label="description"
                         placeholder="Enter a description"
                         ref={register}
                         as="textarea"
@@ -106,7 +122,7 @@ function AddHotel() {
                     <Form.Label className={styles.label} htmlFor="image">
                         Image URL
                     </Form.Label>
-                    <Form.Control name="image" placeholder="Enter image URL" ref={register} />
+                    <Form.Control name="image" aria-label="image" placeholder="Enter image URL" ref={register} />
                     {errors.image && <ErrorMessage errMsg={errors.image?.message} />}
                 </Form.Group>
                 <div className={styles.btnContainer}>

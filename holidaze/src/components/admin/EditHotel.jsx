@@ -108,6 +108,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="name"
+                                aria-label="name"
                                 defaultValue={hotel.name}
                                 placeholder="Enter a name for the hotel"
                                 ref={register}
@@ -120,6 +121,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="email"
+                                aria-label="email"
                                 defaultValue={hotel.email}
                                 placeholder="Enter an email address"
                                 ref={register}
@@ -132,6 +134,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="price"
+                                aria-label="price"
                                 defaultValue={hotel.price}
                                 placeholder="Enter price per night"
                                 ref={register}
@@ -144,6 +147,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="maxGuests"
+                                aria-label="maxGuests"
                                 defaultValue={hotel.maxGuests}
                                 placeholder="Enter the maximum number of guests"
                                 ref={register}
@@ -156,6 +160,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="selfCatering"
+                                aria-label="selfCatering"
                                 defaultValue={hotel.selfCatering}
                                 placeholder="Enter true or false"
                                 ref={register}
@@ -168,6 +173,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="description"
+                                aria-label="description"
                                 defaultValue={hotel.description}
                                 placeholder="Enter a description for the hotel"
                                 ref={register}
@@ -182,6 +188,7 @@ function AddHotel() {
                             </Form.Label>
                             <Form.Control
                                 name="image"
+                                aria-label="image"
                                 defaultValue={hotel.image}
                                 placeholder={hotel.image}
                                 ref={register}

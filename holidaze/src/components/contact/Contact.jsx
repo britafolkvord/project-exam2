@@ -62,14 +62,19 @@ export default function Contact() {
                             <Form.Label className={styles.label} htmlFor="name">
                                 Name
                             </Form.Label>
-                            <Form.Control name="name" placeholder="Enter your name" ref={register} />
+                            <Form.Control name="name" aria-label="name" placeholder="Enter your name" ref={register} />
                             {errors.name && <ErrorMessage errMsg={errors.name.message} />}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.label} htmlFor="email">
                                 Email
                             </Form.Label>
-                            <Form.Control name="email" placeholder="Example@email.com" ref={register} />
+                            <Form.Control
+                                name="email"
+                                aria-label="email"
+                                placeholder="Example@email.com"
+                                ref={register}
+                            />
                             {errors.email && <ErrorMessage errMsg={errors.email.message} />}
                         </Form.Group>
 
@@ -79,6 +84,7 @@ export default function Contact() {
                             </Form.Label>
                             <Form.Control
                                 name="message"
+                                aria-label="message"
                                 placeholder="Type your message here"
                                 as="textarea"
                                 rows={5}

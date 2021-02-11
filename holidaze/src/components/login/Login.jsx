@@ -68,7 +68,12 @@ function Login() {
                     <div className={styles.form}>
                         <Form.Group className={styles.input}>
                             <Form.Label className={styles.label}>Username</Form.Label>
-                            <Form.Control name="username" placeholder="Enter your username" ref={register} />
+                            <Form.Control
+                                name="username"
+                                aria-label="username"
+                                placeholder="Enter your username"
+                                ref={register}
+                            />
                             {errors.username && <ErrorMessage errMsg={errors.username?.message} />}
                         </Form.Group>
 
@@ -76,6 +81,7 @@ function Login() {
                             <Form.Label className={styles.label}>Password</Form.Label>
                             <Form.Control
                                 name="password"
+                                aria-label="password"
                                 type={passwordShown ? 'text' : 'password'}
                                 placeholder="Enter your password"
                                 ref={register}
