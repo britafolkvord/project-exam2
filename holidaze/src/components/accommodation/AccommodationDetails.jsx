@@ -69,7 +69,7 @@ function AccommodationDetails() {
                         </Container>
                         <Container className={styles.content}>
                             <div className={styles.media}>
-                                <Image src={hotel.image} className={styles.image} />
+                                <Image src={hotel.image} className={styles.image} alt={hotel.name} />
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252523.9231594416!2d5.149000744044466!3d60.36523064088785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46390d4966767d77%3A0x9e42a03eb4de0a08!2sBergen!5e0!3m2!1sno!2sno!4v1612549947990!5m2!1sno!2sno"
                                     className={styles.map}
