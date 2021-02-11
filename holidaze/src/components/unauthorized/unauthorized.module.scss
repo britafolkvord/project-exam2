@@ -1,12 +1,10 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .container {
     width: 100%;
     margin: 80px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 
     p {
         font-size: 1.5rem;

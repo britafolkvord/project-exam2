@@ -1,16 +1,13 @@
+@import '../../sass/partials/mixins';
+
 .container {
     padding: 48px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 }
 
 .hotels {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     flex-wrap: wrap;
-    justify-content: center;
     padding: 0;
     margin: 0;
 }

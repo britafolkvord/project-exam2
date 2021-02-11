@@ -1,11 +1,9 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .login {
     margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 }
 
 .form {

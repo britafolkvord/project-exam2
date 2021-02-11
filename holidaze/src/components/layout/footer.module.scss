@@ -20,6 +20,15 @@
     }
 }
 
+.col1 {
+    display: flex;
+    flex-direction: row;
+
+    p {
+        margin-right: 8px;
+    }
+}
+
 .footerLink {
     color: $black;
 
@@ -51,6 +60,15 @@
         .col2,
         .col3 {
             margin: 8px auto;
+        }
+
+        .col1 {
+            flex-direction: column;
+            text-align: center;
+
+            p {
+                margin: 8px auto;
+            }
         }
     }
 }

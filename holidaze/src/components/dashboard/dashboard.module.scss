@@ -1,20 +1,15 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .dashboard {
     padding-top: 48px;
     margin: 0 auto;
-    display: flex;
     min-height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 }
 
 .links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-self: center;
+    @include flex-row;
     width: 100%;
     margin-top: 32px;
     padding: 0;
@@ -49,13 +44,6 @@
 }
 
 @media (max-width: 992px) {
-    .dashboard {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
     .links {
         flex-direction: column;
 

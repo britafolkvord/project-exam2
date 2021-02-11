@@ -1,11 +1,9 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .container {
-    display: flex;
-    flex-direction: column;
     margin: 48px auto;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 
     .description {
         text-align: center;
@@ -48,10 +46,7 @@
     }
 
     .infoGroup {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flex-column;
         padding: 16px;
 
         .icon {

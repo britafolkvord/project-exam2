@@ -1,12 +1,10 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .form {
     padding: 48px 0;
-    display: flex;
     min-height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 }
 
 .formContent {

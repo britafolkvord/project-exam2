@@ -1,4 +1,5 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .home {
     background-image: url('../../img/bergen.jpg');
@@ -7,9 +8,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-column;
 
     h1 {
         text-align: center;

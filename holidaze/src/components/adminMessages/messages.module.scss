@@ -1,21 +1,18 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .messages {
     width: 100%;
     margin: 72px 0 56px;
     padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-column;
     background-color: $dark-grey;
     border-radius: 8px;
 }
 
 .messageContainer {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     flex-wrap: wrap;
-    justify-content: center;
     width: 100%;
     margin-top: 48px;
     padding: 0;
@@ -23,6 +20,7 @@
 
 .message {
     width: 40%;
+    min-height: 370px;
     padding: 24px;
     margin: 8px;
     font-family: $text-font;
@@ -90,5 +88,6 @@ span {
     .message {
         width: 90%;
         margin: 16px auto;
+        min-height: none;
     }
 }
