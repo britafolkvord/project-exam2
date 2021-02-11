@@ -1,12 +1,6 @@
 @import '../../sass/partials/variables';
+@import '../../sass/partials/mixins';
 
 .delete {
-    border: none;
-    font-family: $text-font;
-    font-size: 1.1rem;
-    box-shadow: $box-shadow-btn;
-
-    &:hover {
-        background-color: #a81f2c;
-    }
+    @include delete-btn;
 }
