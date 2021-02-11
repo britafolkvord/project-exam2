@@ -107,7 +107,9 @@ function AddHotel() {
                 {status === Status.Success ? (
                     <Container className={styles.formContent}>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Name</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="name">
+                                Name
+                            </Form.Label>
                             <Form.Control
                                 name="name"
                                 defaultValue={hotel.name}
@@ -117,7 +119,9 @@ function AddHotel() {
                             {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Email</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="email">
+                                Email
+                            </Form.Label>
                             <Form.Control
                                 name="email"
                                 defaultValue={hotel.email}
@@ -127,7 +131,9 @@ function AddHotel() {
                             {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Price</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="price">
+                                Price
+                            </Form.Label>
                             <Form.Control
                                 name="price"
                                 defaultValue={hotel.price}
@@ -137,7 +143,9 @@ function AddHotel() {
                             {errors.price && <ErrorMessage errMsg={errors.price?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Max guests</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="maxGuests">
+                                Max guests
+                            </Form.Label>
                             <Form.Control
                                 name="maxGuests"
                                 defaultValue={hotel.maxGuests}
@@ -147,7 +155,9 @@ function AddHotel() {
                             {errors.maxGuests && <ErrorMessage errMsg={errors.maxGuests?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Self-catering</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="selfCatering">
+                                Self-catering
+                            </Form.Label>
                             <Form.Control
                                 name="selfCatering"
                                 defaultValue={hotel.selfCatering}
@@ -157,7 +167,9 @@ function AddHotel() {
                             {errors.selfCatering && <ErrorMessage errMsg={errors.selfCatering?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Description</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="description">
+                                Description
+                            </Form.Label>
                             <Form.Control
                                 name="description"
                                 defaultValue={hotel.description}
@@ -169,7 +181,9 @@ function AddHotel() {
                             {errors.description && <ErrorMessage errMsg={errors.description?.message} />}
                         </Form.Group>
                         <Form.Group className={styles.input}>
-                            <Form.Label className={styles.label}>Image</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="image">
+                                Image
+                            </Form.Label>
                             <Form.Control
                                 name="image"
                                 defaultValue={hotel.image}

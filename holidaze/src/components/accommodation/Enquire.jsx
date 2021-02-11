@@ -75,27 +75,37 @@ function Enquire() {
                 <Heading title="Enquire" />
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Name</Form.Label>
+                        <Form.Label className={styles.label} htmlFor="name">
+                            Name
+                        </Form.Label>
                         <Form.Control name="name" placeholder="Enter your name" ref={register} />
                         {errors.name && <ErrorMessage errMsg={errors.name.message} />}
                     </Form.Group>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Email</Form.Label>
+                        <Form.Label className={styles.label} htmlFor="email">
+                            Email
+                        </Form.Label>
                         <Form.Control name="email" placeholder="Example@email.com" ref={register} />
                         {errors.email && <ErrorMessage errMsg={errors.email.message} />}
                     </Form.Group>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Check-in date</Form.Label>
+                        <Form.Label className={styles.label} htmlFor="checkIn">
+                            Check-in date
+                        </Form.Label>
                         <Form.Control name="checkIn" type="date" ref={register} />
                         {errors.checkIn && <ErrorMessage errMsg={errors.checkIn.message} />}
                     </Form.Group>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Check-out date</Form.Label>
+                        <Form.Label className={styles.label} htmlFor="checkOut">
+                            Check-out date
+                        </Form.Label>
                         <Form.Control name="checkOut" type="date" ref={register} />
                         {errors.checkOut && <ErrorMessage errMsg={errors.checkOut.message} />}
                     </Form.Group>
                     <Form.Group className={styles.input}>
-                        <Form.Label className={styles.label}>Establishment ID</Form.Label>
+                        <Form.Label className={styles.label} htmlFor="establishmentId">
+                            Establishment ID
+                        </Form.Label>
                         <Form.Control name="establishmentId" value={id} readOnly ref={register} />
                     </Form.Group>
                     <div className={styles.btnContainer}>

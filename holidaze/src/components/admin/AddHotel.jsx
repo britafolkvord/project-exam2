@@ -55,32 +55,44 @@ function AddHotel() {
             <Heading title="Add Hotel" />
             <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Name</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="name">
+                        Name
+                    </Form.Label>
                     <Form.Control name="name" placeholder="Enter a name for the hotel" ref={register} />
                     {errors.name && <ErrorMessage errMsg={errors.name?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Email</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="email">
+                        Email
+                    </Form.Label>
                     <Form.Control name="email" placeholder="Enter an email address" ref={register} />
                     {errors.email && <ErrorMessage errMsg={errors.email?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Price</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="price">
+                        Price
+                    </Form.Label>
                     <Form.Control name="price" placeholder="Enter price per night" ref={register} />
                     {errors.price && <ErrorMessage errMsg={errors.price?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Max guests</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="maxGuests">
+                        Max guests
+                    </Form.Label>
                     <Form.Control name="maxGuests" placeholder="Enter maximum number of guests" ref={register} />
                     {errors.maxGuests && <ErrorMessage errMsg={errors.maxGuests?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Self-catering</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="selfCatering">
+                        Self-catering
+                    </Form.Label>
                     <Form.Control name="selfCatering" placeholder="Enter true or false" ref={register} />
                     {errors.selfCatering && <ErrorMessage errMsg={errors.selfCatering?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Description</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="description">
+                        Description
+                    </Form.Label>
                     <Form.Control
                         name="description"
                         placeholder="Enter a description"
@@ -91,7 +103,9 @@ function AddHotel() {
                     {errors.description && <ErrorMessage errMsg={errors.description?.message} />}
                 </Form.Group>
                 <Form.Group className={styles.input}>
-                    <Form.Label className={styles.label}>Image URL</Form.Label>
+                    <Form.Label className={styles.label} htmlFor="image">
+                        Image URL
+                    </Form.Label>
                     <Form.Control name="image" placeholder="Enter image URL" ref={register} />
                     {errors.image && <ErrorMessage errMsg={errors.image?.message} />}
                 </Form.Group>

@@ -59,18 +59,24 @@ export default function Contact() {
                     <Heading title="Contact" />
                     <Form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                         <Form.Group>
-                            <Form.Label className={styles.label}>Name</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="name">
+                                Name
+                            </Form.Label>
                             <Form.Control name="name" placeholder="Enter your name" ref={register} />
                             {errors.name && <ErrorMessage errMsg={errors.name.message} />}
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label className={styles.label}>Email</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="email">
+                                Email
+                            </Form.Label>
                             <Form.Control name="email" placeholder="Example@email.com" ref={register} />
                             {errors.email && <ErrorMessage errMsg={errors.email.message} />}
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label className={styles.label}>Message</Form.Label>
+                            <Form.Label className={styles.label} htmlFor="message">
+                                Message
+                            </Form.Label>
                             <Form.Control
                                 name="message"
                                 placeholder="Type your message here"
