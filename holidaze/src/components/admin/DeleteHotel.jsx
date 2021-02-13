@@ -14,7 +14,8 @@ function DeleteHotel(props) {
 
     const checkDelete = () => {
         confirmAlert({
-            title: 'Confirm deletion',
+            title: 'Are you sure?',
+            message: 'Deleting this hotel will be permanent',
             buttons: [
                 {
                     label: 'Yes',

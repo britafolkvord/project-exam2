@@ -56,7 +56,7 @@ function AddHotel() {
     };
 
     const history = useHistory();
-    const { register, handleSubmit, errors } = useForm({
+    const { register, handleSubmit, reset, errors } = useForm({
         resolver: yupResolver(schema),
     });
     const [hotel, setHotel] = useState(defaultState);
@@ -94,7 +94,7 @@ function AddHotel() {
 
     return (
         <>
-            <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <Form onSubmit={handleSubmit(onSubmit)} onReset={reset} className={styles.form}>
                 <Heading title="Edit Hotel" />
                 {status === Status.Error ? (
                     <FetchError message="Something went wrong while fetching the hotel" />
@@ -197,6 +197,9 @@ function AddHotel() {
                         </Form.Group>
                         <div className={styles.btnContainer}>
                             <DeleteHotel id={id} />
+                            <Button type="reset" className={styles.reset}>
+                                Reset
+                            </Button>
                             <Button type="submit" className={styles.btn}>
                                 Update
                             </Button>
