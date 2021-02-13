@@ -57,7 +57,6 @@ function App() {
                         </Container>
                         <Footer />
                     </Route>
-
                     <Redirect to={Routes.home} />
                 </Switch>
             </Router>
